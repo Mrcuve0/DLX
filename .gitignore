@@ -1,0 +1,15 @@
+*.dat
+*.dbs
+*.asm64
+*.rw64
+*.syn
+*.mr
+*.vif
+*.wlf
+*.vhd~
+*.sh~
+*.o
+*.cf
+*.ghw
+*.vcd
+*.~*
