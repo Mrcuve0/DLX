@@ -91,7 +91,7 @@ package myTypes is
     ALU_XOR,
     ALU_SNE,
     ALU_SLE,
-    ALU_SGE,
+    ALU_SGE
     );
 
 end myTypes;
