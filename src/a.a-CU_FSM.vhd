@@ -77,8 +77,8 @@ architecture dlx_cu_fsm of dlx_cu is
 
   -- Each CW is retrieved from the cw_mem. The FSM simply changes the pointer to the cw_mem memory location
   type mem_array is array (integer range 0 to MICROCODE_MEM_SIZE - 1) of std_logic_vector(CW_SIZE - 1 downto 0);
-  signal cw_mem_IF_STAGE : mem_array := (
-  "111100010000111",  -- R type: IS IT CORRECT?
+  signal cw_mem : mem_array := (
+  "111100010000111",  -- R type: (DA cambiare, ho riordinato i control signals per stage di appartenenza)
   "000000000000000",
   "111011111001100",  -- J (0X02) instruction encoding corresponds to the address to this ROM
   "000000000000000",  -- JAL to be filled
@@ -89,60 +89,7 @@ architecture dlx_cu_fsm of dlx_cu is
   "000000000000000",  -- ADD i (0X08): FILL IT!!!
   "000000000000000");  -- to be completed (enlarged and filled)
 
-  signal cw_mem_ID_STAGE : mem_array := (
-  "111100010000111",  -- R type: IS IT CORRECT?
-  "000000000000000",
-  "111011111001100",  -- J (0X02) instruction encoding corresponds to the address to this ROM
-  "000000000000000",  -- JAL to be filled
-  "000000000000000",  -- BEQZ to be filled
-  "000000000000000",  -- BNEZ
-  "000000000000000",  --
-  "000000000000000",
-  "000000000000000",  -- ADD i (0X08): FILL IT!!!
-  "000000000000000");  -- to be completed (enlarged and filled)
-
-  signal cw_mem_EXE_STAGE : mem_array := (
-  "111100010000111",  -- R type: IS IT CORRECT?
-  "000000000000000",
-  "111011111001100",  -- J (0X02) instruction encoding corresponds to the address to this ROM
-  "000000000000000",  -- JAL to be filled
-  "000000000000000",  -- BEQZ to be filled
-  "000000000000000",  -- BNEZ
-  "000000000000000",  --
-  "000000000000000",
-  "000000000000000",  -- ADD i (0X08): FILL IT!!!
-  "000000000000000");  -- to be completed (enlarged and filled)
-
-  signal cw_mem_MEM_STAGE : mem_array := (
-  "111100010000111",  -- R type: IS IT CORRECT?
-  "000000000000000",
-  "111011111001100",  -- J (0X02) instruction encoding corresponds to the address to this ROM
-  "000000000000000",  -- JAL to be filled
-  "000000000000000",  -- BEQZ to be filled
-  "000000000000000",  -- BNEZ
-  "000000000000000",  --
-  "000000000000000",
-  "000000000000000",  -- ADD i (0X08): FILL IT!!!
-  "000000000000000");  -- to be completed (enlarged and filled)
-
-  signal cw_mem_WB_STAGE : mem_array := (
-  "111100010000111",  -- R type: IS IT CORRECT?
-  "000000000000000",
-  "111011111001100",  -- J (0X02) instruction encoding corresponds to the address to this ROM
-  "000000000000000",  -- JAL to be filled
-  "000000000000000",  -- BEQZ to be filled
-  "000000000000000",  -- BNEZ
-  "000000000000000",  --
-  "000000000000000",
-  "000000000000000",  -- ADD i (0X08): FILL IT!!!
-  "000000000000000");  -- to be completed (enlarged and filled)
-
-  signal cw_IF_STAGE : std_logic_vector(CW_SIZE - 1 downto 0);  -- full control word read from cw_mem
-  signal cw_ID_STAGE : std_logic_vector(CW_SIZE - 1 downto 0);  -- full control word read from cw_mem
-  signal cw_EXE_STAGE : std_logic_vector(CW_SIZE - 1 downto 0);  -- full control word read from cw_mem
-  signal cw_MEM_STAGE : std_logic_vector(CW_SIZE - 1 downto 0);  -- full control word read from cw_mem
-  signal cw_WB_STAGE : std_logic_vector(CW_SIZE - 1 downto 0);  -- full control word read from cw_mem
-
+  signal cw : std_logic_vector(CW_SIZE - 1 downto 0);  -- full control word read from cw_mem
   -- signal aluOpcode_i : std_logic_vector(ALU_OPC_SIZE - 1 downto 0);
   signal aluOpcode_i : aluOp;
 
@@ -152,14 +99,16 @@ begin  -- dlx_cu_rtl
   FUNC(10 downto 0)  <= IR_IN(FUNC_SIZE - 1 downto 0);
 
   -- EXE-Stage: Generation of ALU OpCode
+  -- Questo processo decide solamente l'OPCODE/CW specifica dell'ALU,
+  -- usato sia per R-TYPE (es. ADD) che per I-TYPE (es. ADDI)
   ALU_OP_CODE_P : process (OPCODE, FUNC)
   begin
     case OPCODE is
       -- If the instruction is of RTYPE...
       when RTYPE =>
         case FUNC is
-          when RTYPE_ADD => aluOpcode_i <= ALU_ADD;
-          when RTYPE_SUB => aluOpcode_i <= ALU_SUB;
+          when RTYPE_ADD => aluOpcode_i <= ALU_ADD; -- aluOpcode_i assume valori enumerati (numeri da 1 in poi?), 
+          when RTYPE_SUB => aluOpcode_i <= ALU_SUB; -- che useremo per puntare alla memoria della CW per l'ALU
           when RTYPE_AND => aluOpcode_i <= ALU_AND;
                                         -- to be continued and filled with all the other instructions
           when others    => aluOpcode_i <= ALU_NOP;
@@ -170,14 +119,6 @@ begin  -- dlx_cu_rtl
       when ITYPE_SUBI1 => aluOpcode_i <= ALU_SUB;
       when ITYPE_ANDI1 => aluOpcode_i <= ALU_AND;
       when ITYPE_ORI1  => aluOpcode_i <= ALU_OR;
-
-      -- TODO: Non posso, magari, mergiare ADDI1 con ADDI2 e così via? In modo da indicare solo una volta,
-      -- tanto l'operazione alu è sempre la stessa...
-      when ITYPE_ADDI2 => aluOpcode_i <= ALU_ADD;
-      when ITYPE_SUBI2 => aluOpcode_i <= ALU_SUB;
-      when ITYPE_ANDI2 => aluOpcode_i <= ALU_AND;
-      when ITYPE_ORI2  => aluOpcode_i <= ALU_OR;
-
 
       when 3      => aluOpcode_i <= ALU_NOP;  -- jal
       when 8      => aluOpcode_i <= ALU_ADD;  -- addi
@@ -223,6 +164,8 @@ begin  -- dlx_cu_rtl
   begin
     case currentState is
       when RESET =>
+        -- Per ogni stage, andiamo ad assegnare solo i segnali relativi ad esso
+        -- estraendoli dalla CW
 
         nextState <= IF_STAGE;
 
@@ -251,7 +194,7 @@ begin  -- dlx_cu_rtl
 -- We retrieve the actual CW from the cw_mem, depending on the OPCODE pointer
   cw <= cw_mem(to_integer(unsigned(OPCODE)));
 
-
+-- Questa parte sotto forse non è necessaria: possiamo farlo direttamente nel processo P_OUTPUTS
 -- stage one control signals
   IR_LATCH_EN  <= cw1(CW_SIZE - 1);
   NPC_LATCH_EN <= cw1(CW_SIZE - 2);
