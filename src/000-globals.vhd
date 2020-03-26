@@ -14,12 +14,12 @@ package myTypes is
   --                                                                                
   --                                                                                
 
-  constant MICROCODE_MEM_SIZE : integer := 10;  -- Microcode Memory Size
+  constant MICROCODE_MEM_SIZE : integer := 30;  -- Microcode Memory Size (27 Base)
   constant IR_SIZE            : integer := 32;  -- Instruction Register Size
   constant OPCODE_SIZE        : integer := 6;   -- Op Code Size
   constant FUNC_SIZE          : integer := 11;  -- Func Field Size for R-Type Ops
-  constant ALU_OPC_SIZE       : integer := 6;   -- ALU Op Code Word Size
-  constant CW_SIZE            : integer := 15;  -- Control Word Size
+  constant ALU_OPC_SIZE       : integer := 4;   -- ALU Op Code Word Size
+  constant CW_SIZE            : integer := 31;  -- Control Word Size
 
   -- R-Type instructions -> OPCODE field
   constant RTYPE         : std_logic_vector(OPCODE_SIZE - 1 downto 0) := "000000";
@@ -81,7 +81,6 @@ package myTypes is
 
   -- Control Word specific to the ALU component
   type aluOp is (
-    ALU_NOP,
     ALU_SLL,
     ALU_SRL,
     ALU_ADD,
@@ -89,10 +88,11 @@ package myTypes is
     ALU_AND,
     ALU_OR,
     ALU_XOR,
-    ALU_SNE,
-    ALU_SLE,
-    ALU_SGE
-    );
+    ALU_NE,
+    ALU_LE,
+    ALU_GE,
+    ALU_NOP
+  );
 
 end myTypes;
 
