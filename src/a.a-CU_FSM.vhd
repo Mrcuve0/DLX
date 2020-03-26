@@ -12,8 +12,8 @@ use work.myTypes.all;
 
 entity dlx_cu is
   generic (
-    MICROCODE_MEM_SIZE : integer := 30;   -- Microcode Memory Size (27 base)
-    ALU_OPC_MEM_SIZE   : integer := 9;    -- AluOpcode Memory Size (9 per ora)
+    MICROCODE_MEM_SIZE : integer := 47;   -- Microcode Memory Size (27 base)
+    ALU_OPC_MEM_SIZE   : integer := 20;    -- AluOpcode Memory Size (9 per ora)
     IR_SIZE            : integer := 32;   -- Instruction Register Size
     OPCODE_SIZE        : integer := 6;    -- Op Code Size
     FUNC_SIZE          : integer := 11;   -- Func Field Size for R-Type Ops
@@ -97,29 +97,77 @@ architecture dlx_cu_fsm of dlx_cu is
   type alu_mem_array is array (integer range 0 to ALU_OPC_MEM_SIZE - 1) of std_logic_vector(ALU_OPC_SIZE - 1 downto 0);
 
   signal cw_mem : mem_array := (
-    "111100010000111",  -- R-type: (Da cambiare, ho riordinato i control signals per stage di appartenenza)
-    "000000000000000",
-    "111011111001100",  -- J (0X02) instruction encoding corresponds to the address to this ROM
-    "000000000000000",                  -- JAL to be filled
-    "000000000000000",                  -- BEQZ to be filled
-    "000000000000000",                  -- BNEZ
-    "000000000000000",                  --
-    "000000000000000",
-    "000000000000000",                  -- ADD i (0X08): FILL IT!!!
-    "000000000000000");  -- to be completed (enlarged and filled)
+  "1010010110101001010010100011101",  -- R type: (DA cambiare, ho riordinato i control signals per stage di appartenenza)
+  "0000000000000000000000000000000",
+  "1110110000011101010000000000110",  -- J (0X02) instruction encoding corresponds to the address to this ROM
+  "1110111000110101010100101001001",  -- JAL to be filled
+  "1110000000011101010000000000110",  -- BEQZ to be filled
+  "1111000000011101010000000000110",  -- BNEZ
+  "0000000000000000000000000000000",  -- BFPT
+  "0000000000000000000000000000000",  -- BFPF
+  "1010010101100110010010100011101",  -- ADDI
+  "0000000000000000000000000000000",  -- ADDUI
+  "1010010101100110011010100011101",  -- SUBI
+  "0000000000000000000000000000000",
+  "1010010101100010100010100011101",  -- ANDI
+  "1010010101100010101010100011101",  -- ORI
+  "1010010101100010110010100011101", -- XORI
+  "0000000000000000000000000000000",
+  "0000000000000000000000000000000",
+  "0000000000000000000000000000000",
+  "0000000000000000000000000000000",
+  "0000000000000000000000000000000",
+  "1010010101100010000010100011101", -- SLLI
+  "0000000000000000000000000000000", -- NOP!!
+  "1010010101100010001010100011101", -- SRLI
+  "0000000000000000000000000000000",
+  "0000000000000000000000000000000",
+  "1010010101100110111010100011101", -- SNEI
+  "0000000000000000000000000000000",
+  "0000000000000000000000000000000",
+  "1010010101100111000010100011101", -- SLEI
+  "1010010101100111001010100011101", -- SGEI
+  "0000000000000000000000000000000",
+  "0000000000000000000000000000000",
+  "1010010101100110010010100101011", -- LW
+  "0000000000000000000000000000000",
+  "0000000000000000000000000000000",
+  "0000000000000000000000000000000",
+  "0000000000000000000000000000000",
+  "0000000000000000000000000000000",
+  "0000000000000000000000000000000",
+  "1010010111000110010011010000110", -- SW
+  "0000000000000000000000000000000",
+  "0000000000000000000000000000000",
+  "0000000000000000000000000000000",
+  "0000000000000000000000000000000",
+  "0000000000000000000000000000000",
+  "0000000000000000000000000000000",
+  "0000000000000000000000000000000"
+  );
 
   type aluOpcode_mem : alu_mem_array := (  -- Indirizzata da FUNC
+    "0000",
+    "0000",
+    "0000",
+    "0000",
     "0000",                                -- SLL
     "0001",                                -- SRL
+    "0000",
     "0010",                                -- ADD
+    "0000",
     "0011",                                -- SUB
+    "0000",
     "0100",                                -- AND
     "0101",                                -- OR
     "0110",                                -- XOR
+    "0000",
     "0111",                                -- NE
+    "0000",
+    "0000",
     "1000",                                -- LE
-    "1001",                                -- GE
-    )
+    "1001"                                 -- GE
+    );
 
                                         signal cw : std_logic_vector(CW_SIZE - 1 downto 0);  -- full control word read from cw_mem
   signal aluOpcode : std_logic_vector(ALU_OPC_SIZE -1 downto 0);  -- ALU OPCODE Control Word read from aluOpcode_mem
