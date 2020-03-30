@@ -13,4 +13,4 @@
 *.ghw
 *.vcd
 *.~*
-src/.hdl_checker/
+.hdl_checker/
