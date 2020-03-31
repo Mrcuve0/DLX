@@ -13,7 +13,7 @@ use work.myTypes.all;
 entity dlx_cu is
   generic (
     MICROCODE_MEM_SIZE : integer := 47;   -- Microcode Memory Size (27 base)
-    ALU_OPC_MEM_SIZE   : integer := 20;    -- AluOpcode Memory Size (9 per ora)
+    ALU_OPC_MEM_SIZE   : integer := 45;    -- AluOpcode Memory Size (9 per ora)
     IR_SIZE            : integer := 32;   -- Instruction Register Size
     OPCODE_SIZE        : integer := 6;    -- Op Code Size
     FUNC_SIZE          : integer := 11;   -- Func Field Size for R-Type Ops
@@ -97,7 +97,7 @@ architecture dlx_cu_fsm of dlx_cu is
   type alu_mem_array is array (integer range 0 to ALU_OPC_MEM_SIZE - 1) of std_logic_vector(ALU_OPC_SIZE - 1 downto 0);
 
   signal cw_mem : mem_array := (
-  "1010010110101001010010100011101",  -- R type: (DA cambiare, ho riordinato i control signals per stage di appartenenza)
+  "1010010110101001010010100011101",  -- R type
   "0000000000000000000000000000000",
   "1110110000011101010000000000110",  -- J (0X02) instruction encoding corresponds to the address to this ROM
   "1110111000110101010100101001001",  -- JAL to be filled
@@ -154,6 +154,31 @@ architecture dlx_cu_fsm of dlx_cu is
     "0000",                                -- SLL
     "0001",                                -- SRL
     "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
     "0010",                                -- ADD
     "0000",
     "0011",                                -- SUB
@@ -161,6 +186,7 @@ architecture dlx_cu_fsm of dlx_cu is
     "0100",                                -- AND
     "0101",                                -- OR
     "0110",                                -- XOR
+    "0000",
     "0000",
     "0111",                                -- NE
     "0000",

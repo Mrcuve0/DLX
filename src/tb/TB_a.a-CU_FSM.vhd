@@ -72,7 +72,7 @@ architecture TB_arch of TB_CU_FSM is
     type alu_mem_array_s is array (integer range 0 to ALU_OPC_MEM_SIZE - 1) of std_logic_vector(ALU_OPC_SIZE - 1 downto 0);
   
     signal cw_mem_s : mem_array_s := (
-    "1010010110101001010010100011101",  -- R type: (DA cambiare, ho riordinato i control signals per stage di appartenenza)
+    "1010010110101001010010100011101",  -- R type
     "0000000000000000000000000000000",
     "1110110000011101010000000000110",  -- J (0X02) instruction encoding corresponds to the address to this ROM
     "1110111000110101010100101001001",  -- JAL to be filled
@@ -121,13 +121,38 @@ architecture TB_arch of TB_CU_FSM is
     "0000000000000000000000000000000"
     );
 
-    signal aluOpcode_mem_s : alu_mem_array := (  -- Indirizzata da FUNC
+    signal aluOpcode_mem : alu_mem_array := (  -- Indirizzata da FUNC
     "0000",
     "0000",
     "0000",
     "0000",
     "0000",                                -- SLL
     "0001",                                -- SRL
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
+    "0000",
     "0000",
     "0010",                                -- ADD
     "0000",
@@ -136,6 +161,7 @@ architecture TB_arch of TB_CU_FSM is
     "0100",                                -- AND
     "0101",                                -- OR
     "0110",                                -- XOR
+    "0000",
     "0000",
     "0111",                                -- NE
     "0000",
@@ -147,7 +173,7 @@ architecture TB_arch of TB_CU_FSM is
     component dlx_cu is
         generic (
           MICROCODE_MEM_SIZE : integer := 47;   -- Microcode Memory Size (27 base)
-          ALU_OPC_MEM_SIZE   : integer := 20;   -- AluOpcode Memory Size (9 per ora)
+          ALU_OPC_MEM_SIZE   : integer := 45;   -- AluOpcode Memory Size (9 per ora)
           IR_SIZE            : integer := 32;   -- Instruction Register Size
           OPCODE_SIZE        : integer := 6;    -- Op Code Size
           FUNC_SIZE          : integer := 11;   -- Func Field Size for R-Type Ops
@@ -259,7 +285,8 @@ begin
 				-- variable instructionReg : IR_IN_s'subtype;
         variable instructionReg : std_logic_vector(IR_SIZE - 1 downto 0);
         variable opName : string(1 to 5);
-        variable expectedCW : std_logic_vector(CW_SIZE - 1 downto 0);
+        variable obtainedCW_s : std_logic_vector(CW_SIZE - 1 downto 0);
+        variable func_var : std_logic_vector(FUNC_SIZE-1 downto 0);
         file vectorFile : text;
 
     begin
@@ -288,32 +315,45 @@ begin
             -- if RTYPE
               -- Usiamo il campo FUNC dall'IR per indirizzare l'aluOpcode giusto dalla memoria (ottenendo expectedAluCopcode)
               -- fatto questo, compariamo expectedAluCopcode con ALU_OPCODE_s (segnale reale). Se sono uguali allora controlliamo
-              -- il resto della control word (eliminando ALU_OPCODE_s o inserendola)
+              -- il resto della control word (inserendo al posto di ALU_OPCODE_s "1010" che per ora identifichiamo come la nop della Alu)
               -- Se invece sono diverse allora errore (specifichiamo che riguarda l'aluOpcode)
             -- else
               -- controlliamo direttamente la expectedCW_s con quella ottenuta dalla concatenazione dei segnali di uscita
 
+            -- If R-TYPE
+            if IR_IN_s(IR_SIZE - 1 downto IR_SIZE - OPCODE_SIZE) = "000000" then
+              -- Let's take FUNC from IR_IN
+              func_var <= IR_IN_s(FUNC_SIZE-1 downto 0);
+              expectedAluOpcode <= alu_mem_array_s(to_integer(unsigned(func_var)));
 
-            obtainedCW_s <= PC_LATCH_EN_s & NPC_LATCH_EN_s & IR_LATCH_EN_s & BRANCH_SEL_s & JUMP_EN_s &
+              obtainedCW_s <= PC_LATCH_EN_s & NPC_LATCH_EN_s & IR_LATCH_EN_s & BRANCH_SEL_s & JUMP_EN_s &
+              JUMP_SEL_s & NPC_LATCH_EN_ID_s & RegA_LATCH_EN_ID_s & RegB_LATCH_EN_ID_s & RegImm_LATCH_EN_ID_s &
+              Rd_LATCH_EN_ID_s & RegMux_SEL_s & Sign_SEL_s & MuxB_SEL_s & "1010" & NPC_LATCH_EN_EXE_s &
+              ALU_OUTREG_EN_EXE_s & RegB_LATCH_EN_EXE_s & RD_LATCH_EN_EXE_s & DRAM_WE_s & NPC_LATCH_EN_MEM_s &
+              LMD_LATCH_EN_s & ALU_OUTREG_EN_MEM_s & RD_LATCH_EN_MEM_s & WB_MUX_SEL_s & RF_WE_s;
+
+              if (ALU_OPCODE_s /= expectedAluOpcode) then
+                report "Obtainded AluOpcode of R-type DIFFERS!!!"
+                severity failure;
+              end if;
+
+              if (obtainedCW_s /= cw_mem_s(to_integer(unsigned(IR_IN_s(IR_SIZE - 1 downto IR_SIZE - OPCODE_SIZE))))) then
+                report "ObtainedCW of R-type DIFFERS!!!"
+                severity failure;
+              end if;
+
+            else
+              -- I-type
+              obtainedCW_s <= PC_LATCH_EN_s & NPC_LATCH_EN_s & IR_LATCH_EN_s & BRANCH_SEL_s & JUMP_EN_s &
               JUMP_SEL_s & NPC_LATCH_EN_ID_s & RegA_LATCH_EN_ID_s & RegB_LATCH_EN_ID_s & RegImm_LATCH_EN_ID_s &
               Rd_LATCH_EN_ID_s & RegMux_SEL_s & Sign_SEL_s & MuxB_SEL_s & ALU_OPCODE_s & NPC_LATCH_EN_EXE_s &
               ALU_OUTREG_EN_EXE_s & RegB_LATCH_EN_EXE_s & RD_LATCH_EN_EXE_s & DRAM_WE_s & NPC_LATCH_EN_MEM_s &
               LMD_LATCH_EN_s & ALU_OUTREG_EN_MEM_s & RD_LATCH_EN_MEM_s & WB_MUX_SEL_s & RF_WE_s;
 
-
-            -- Se R-TYPE
-            if IR_IN_s(IR_SIZE - 1 downto IR_SIZE - OPCODE_SIZE) = "000000" then
-              -- Estraiamo func
-              func_var <= IR_IN_s(IR_SIZE - OPCODE_SIZE - 1 downto IR_SIZE - OPCODE_SIZE - FUNC_SIZE);
-              expectedAluOpcode <= alu_mem_array_s(to_integer(unsigned(func_var)));
-              if expectedAluOpcode /= 
-            end if;
-
-
-
-            if (expectedCW_s /= cw_mem_s(to_integer(unsigned(IR_IN_s(IR_SIZE - 1 downto IR_SIZE - OPCODE_SIZE))))) then
-              report "ExpectedCW DIFFERS!!!"
-              severity failure;
+              if (obtainedCW_s /= cw_mem_s(to_integer(unsigned(IR_IN_s(IR_SIZE - 1 downto IR_SIZE - OPCODE_SIZE))))) then
+                report "ObtainedCW of I-type DIFFERS!!!"
+                severity failure;
+              end if;
             end if;
 
             wait until rising_edge(clk_s);
