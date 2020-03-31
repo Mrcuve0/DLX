@@ -14,7 +14,8 @@ package myTypes is
   --                                                                                
   --                                                                                
 
-  constant MICROCODE_MEM_SIZE : integer := 30;  -- Microcode Memory Size (27 Base)
+  constant MICROCODE_MEM_SIZE : integer := 47;  -- Microcode Memory Size (27 Base)
+  constant ALU_OPC_MEM_SIZE   : integer := 20;  -- AluOpcode Memory Size (9 per ora)
   constant IR_SIZE            : integer := 32;  -- Instruction Register Size
   constant OPCODE_SIZE        : integer := 6;   -- Op Code Size
   constant FUNC_SIZE          : integer := 11;  -- Func Field Size for R-Type Ops
