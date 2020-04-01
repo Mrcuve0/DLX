@@ -1,22 +1,22 @@
 [*]
 [*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
-[*] Wed Apr  1 15:25:06 2020
+[*] Wed Apr  1 17:23:08 2020
 [*]
 [dumpfile] "/home/sem/OneDrive/Politecnico di Torino/01 - Magistrale/Anno 1 -- 2018-2019/Secondo Semestre/Microelectronic System/2019-2020/DLX/sim/CU/CU_DLX.ghw"
-[dumpfile_mtime] "Wed Apr  1 15:23:25 2020"
-[dumpfile_size] 18552
+[dumpfile_mtime] "Wed Apr  1 17:10:07 2020"
+[dumpfile_size] 21142
 [savefile] "/home/sem/OneDrive/Politecnico di Torino/01 - Magistrale/Anno 1 -- 2018-2019/Secondo Semestre/Microelectronic System/2019-2020/DLX/sim/CU/GTKWaveSavefile.gtkw"
 [timestart] 0
 [size] 1680 997
 [pos] -1 -1
-*-21.514366 3000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-23.514366 11000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] top.
 [treeopen] top.tb_cu_fsm.
 [treeopen] top.tb_cu_fsm.dlx_cu_1.
-[sst_width] 264
-[signals_width] 323
+[sst_width] 217
+[signals_width] 317
 [sst_expanded] 1
-[sst_vpaned_height] 540
+[sst_vpaned_height] 484
 @28
 top.tb_cu_fsm.clk_s
 top.tb_cu_fsm.rst_n_s
@@ -24,29 +24,74 @@ top.tb_cu_fsm.rst_n_s
 #{top.tb_cu_fsm.opname_s[1:5]} top.tb_cu_fsm.opname_s[1] top.tb_cu_fsm.opname_s[2] top.tb_cu_fsm.opname_s[3] top.tb_cu_fsm.opname_s[4] top.tb_cu_fsm.opname_s[5]
 @200
 -
+-CU
 @22
-#{top.tb_cu_fsm.ir_in_s[31:0]} top.tb_cu_fsm.ir_in_s[31] top.tb_cu_fsm.ir_in_s[30] top.tb_cu_fsm.ir_in_s[29] top.tb_cu_fsm.ir_in_s[28] top.tb_cu_fsm.ir_in_s[27] top.tb_cu_fsm.ir_in_s[26] top.tb_cu_fsm.ir_in_s[25] top.tb_cu_fsm.ir_in_s[24] top.tb_cu_fsm.ir_in_s[23] top.tb_cu_fsm.ir_in_s[22] top.tb_cu_fsm.ir_in_s[21] top.tb_cu_fsm.ir_in_s[20] top.tb_cu_fsm.ir_in_s[19] top.tb_cu_fsm.ir_in_s[18] top.tb_cu_fsm.ir_in_s[17] top.tb_cu_fsm.ir_in_s[16] top.tb_cu_fsm.ir_in_s[15] top.tb_cu_fsm.ir_in_s[14] top.tb_cu_fsm.ir_in_s[13] top.tb_cu_fsm.ir_in_s[12] top.tb_cu_fsm.ir_in_s[11] top.tb_cu_fsm.ir_in_s[10] top.tb_cu_fsm.ir_in_s[9] top.tb_cu_fsm.ir_in_s[8] top.tb_cu_fsm.ir_in_s[7] top.tb_cu_fsm.ir_in_s[6] top.tb_cu_fsm.ir_in_s[5] top.tb_cu_fsm.ir_in_s[4] top.tb_cu_fsm.ir_in_s[3] top.tb_cu_fsm.ir_in_s[2] top.tb_cu_fsm.ir_in_s[1] top.tb_cu_fsm.ir_in_s[0]
+#{top.tb_cu_fsm.dlx_cu_1.ir_in[31:0]} top.tb_cu_fsm.dlx_cu_1.ir_in[31] top.tb_cu_fsm.dlx_cu_1.ir_in[30] top.tb_cu_fsm.dlx_cu_1.ir_in[29] top.tb_cu_fsm.dlx_cu_1.ir_in[28] top.tb_cu_fsm.dlx_cu_1.ir_in[27] top.tb_cu_fsm.dlx_cu_1.ir_in[26] top.tb_cu_fsm.dlx_cu_1.ir_in[25] top.tb_cu_fsm.dlx_cu_1.ir_in[24] top.tb_cu_fsm.dlx_cu_1.ir_in[23] top.tb_cu_fsm.dlx_cu_1.ir_in[22] top.tb_cu_fsm.dlx_cu_1.ir_in[21] top.tb_cu_fsm.dlx_cu_1.ir_in[20] top.tb_cu_fsm.dlx_cu_1.ir_in[19] top.tb_cu_fsm.dlx_cu_1.ir_in[18] top.tb_cu_fsm.dlx_cu_1.ir_in[17] top.tb_cu_fsm.dlx_cu_1.ir_in[16] top.tb_cu_fsm.dlx_cu_1.ir_in[15] top.tb_cu_fsm.dlx_cu_1.ir_in[14] top.tb_cu_fsm.dlx_cu_1.ir_in[13] top.tb_cu_fsm.dlx_cu_1.ir_in[12] top.tb_cu_fsm.dlx_cu_1.ir_in[11] top.tb_cu_fsm.dlx_cu_1.ir_in[10] top.tb_cu_fsm.dlx_cu_1.ir_in[9] top.tb_cu_fsm.dlx_cu_1.ir_in[8] top.tb_cu_fsm.dlx_cu_1.ir_in[7] top.tb_cu_fsm.dlx_cu_1.ir_in[6] top.tb_cu_fsm.dlx_cu_1.ir_in[5] top.tb_cu_fsm.dlx_cu_1.ir_in[4] top.tb_cu_fsm.dlx_cu_1.ir_in[3] top.tb_cu_fsm.dlx_cu_1.ir_in[2] top.tb_cu_fsm.dlx_cu_1.ir_in[1] top.tb_cu_fsm.dlx_cu_1.ir_in[0]
+#{top.tb_cu_fsm.dlx_cu_1.opcode[5:0]} top.tb_cu_fsm.dlx_cu_1.opcode[5] top.tb_cu_fsm.dlx_cu_1.opcode[4] top.tb_cu_fsm.dlx_cu_1.opcode[3] top.tb_cu_fsm.dlx_cu_1.opcode[2] top.tb_cu_fsm.dlx_cu_1.opcode[1] top.tb_cu_fsm.dlx_cu_1.opcode[0]
+#{top.tb_cu_fsm.dlx_cu_1.func[10:0]} top.tb_cu_fsm.dlx_cu_1.func[10] top.tb_cu_fsm.dlx_cu_1.func[9] top.tb_cu_fsm.dlx_cu_1.func[8] top.tb_cu_fsm.dlx_cu_1.func[7] top.tb_cu_fsm.dlx_cu_1.func[6] top.tb_cu_fsm.dlx_cu_1.func[5] top.tb_cu_fsm.dlx_cu_1.func[4] top.tb_cu_fsm.dlx_cu_1.func[3] top.tb_cu_fsm.dlx_cu_1.func[2] top.tb_cu_fsm.dlx_cu_1.func[1] top.tb_cu_fsm.dlx_cu_1.func[0]
+#{top.tb_cu_fsm.dlx_cu_1.alu_opcode[3:0]} top.tb_cu_fsm.dlx_cu_1.alu_opcode[3] top.tb_cu_fsm.dlx_cu_1.alu_opcode[2] top.tb_cu_fsm.dlx_cu_1.alu_opcode[1] top.tb_cu_fsm.dlx_cu_1.alu_opcode[0]
+@200
+-
+@22
 #{top.tb_cu_fsm.obtainedcw_s[30:0]} top.tb_cu_fsm.obtainedcw_s[30] top.tb_cu_fsm.obtainedcw_s[29] top.tb_cu_fsm.obtainedcw_s[28] top.tb_cu_fsm.obtainedcw_s[27] top.tb_cu_fsm.obtainedcw_s[26] top.tb_cu_fsm.obtainedcw_s[25] top.tb_cu_fsm.obtainedcw_s[24] top.tb_cu_fsm.obtainedcw_s[23] top.tb_cu_fsm.obtainedcw_s[22] top.tb_cu_fsm.obtainedcw_s[21] top.tb_cu_fsm.obtainedcw_s[20] top.tb_cu_fsm.obtainedcw_s[19] top.tb_cu_fsm.obtainedcw_s[18] top.tb_cu_fsm.obtainedcw_s[17] top.tb_cu_fsm.obtainedcw_s[16] top.tb_cu_fsm.obtainedcw_s[15] top.tb_cu_fsm.obtainedcw_s[14] top.tb_cu_fsm.obtainedcw_s[13] top.tb_cu_fsm.obtainedcw_s[12] top.tb_cu_fsm.obtainedcw_s[11] top.tb_cu_fsm.obtainedcw_s[10] top.tb_cu_fsm.obtainedcw_s[9] top.tb_cu_fsm.obtainedcw_s[8] top.tb_cu_fsm.obtainedcw_s[7] top.tb_cu_fsm.obtainedcw_s[6] top.tb_cu_fsm.obtainedcw_s[5] top.tb_cu_fsm.obtainedcw_s[4] top.tb_cu_fsm.obtainedcw_s[3] top.tb_cu_fsm.obtainedcw_s[2] top.tb_cu_fsm.obtainedcw_s[1] top.tb_cu_fsm.obtainedcw_s[0]
 @200
 -
 @28
 top.tb_cu_fsm.rst_if_id_s
 top.tb_cu_fsm.rst_id_exe_s
-@29
 top.tb_cu_fsm.rst_exe_mem_s
-@28
 top.tb_cu_fsm.rst_mem_wb_s
 @200
 -
+-IF_STAGE
+@c00022
+#{top.tb_cu_fsm.dlx_cu_1.cw0[30:0]} top.tb_cu_fsm.dlx_cu_1.cw0[30] top.tb_cu_fsm.dlx_cu_1.cw0[29] top.tb_cu_fsm.dlx_cu_1.cw0[28] top.tb_cu_fsm.dlx_cu_1.cw0[27] top.tb_cu_fsm.dlx_cu_1.cw0[26] top.tb_cu_fsm.dlx_cu_1.cw0[25] top.tb_cu_fsm.dlx_cu_1.cw0[24] top.tb_cu_fsm.dlx_cu_1.cw0[23] top.tb_cu_fsm.dlx_cu_1.cw0[22] top.tb_cu_fsm.dlx_cu_1.cw0[21] top.tb_cu_fsm.dlx_cu_1.cw0[20] top.tb_cu_fsm.dlx_cu_1.cw0[19] top.tb_cu_fsm.dlx_cu_1.cw0[18] top.tb_cu_fsm.dlx_cu_1.cw0[17] top.tb_cu_fsm.dlx_cu_1.cw0[16] top.tb_cu_fsm.dlx_cu_1.cw0[15] top.tb_cu_fsm.dlx_cu_1.cw0[14] top.tb_cu_fsm.dlx_cu_1.cw0[13] top.tb_cu_fsm.dlx_cu_1.cw0[12] top.tb_cu_fsm.dlx_cu_1.cw0[11] top.tb_cu_fsm.dlx_cu_1.cw0[10] top.tb_cu_fsm.dlx_cu_1.cw0[9] top.tb_cu_fsm.dlx_cu_1.cw0[8] top.tb_cu_fsm.dlx_cu_1.cw0[7] top.tb_cu_fsm.dlx_cu_1.cw0[6] top.tb_cu_fsm.dlx_cu_1.cw0[5] top.tb_cu_fsm.dlx_cu_1.cw0[4] top.tb_cu_fsm.dlx_cu_1.cw0[3] top.tb_cu_fsm.dlx_cu_1.cw0[2] top.tb_cu_fsm.dlx_cu_1.cw0[1] top.tb_cu_fsm.dlx_cu_1.cw0[0]
 @28
-top.tb_cu_fsm.dlx_cu_1.is_if
+top.tb_cu_fsm.dlx_cu_1.cw0[30]
+top.tb_cu_fsm.dlx_cu_1.cw0[29]
+top.tb_cu_fsm.dlx_cu_1.cw0[28]
+top.tb_cu_fsm.dlx_cu_1.cw0[27]
+top.tb_cu_fsm.dlx_cu_1.cw0[26]
+top.tb_cu_fsm.dlx_cu_1.cw0[25]
+top.tb_cu_fsm.dlx_cu_1.cw0[24]
+top.tb_cu_fsm.dlx_cu_1.cw0[23]
+top.tb_cu_fsm.dlx_cu_1.cw0[22]
+top.tb_cu_fsm.dlx_cu_1.cw0[21]
+top.tb_cu_fsm.dlx_cu_1.cw0[20]
+top.tb_cu_fsm.dlx_cu_1.cw0[19]
+top.tb_cu_fsm.dlx_cu_1.cw0[18]
+top.tb_cu_fsm.dlx_cu_1.cw0[17]
+top.tb_cu_fsm.dlx_cu_1.cw0[16]
+top.tb_cu_fsm.dlx_cu_1.cw0[15]
+top.tb_cu_fsm.dlx_cu_1.cw0[14]
+top.tb_cu_fsm.dlx_cu_1.cw0[13]
+top.tb_cu_fsm.dlx_cu_1.cw0[12]
+top.tb_cu_fsm.dlx_cu_1.cw0[11]
+top.tb_cu_fsm.dlx_cu_1.cw0[10]
+top.tb_cu_fsm.dlx_cu_1.cw0[9]
+top.tb_cu_fsm.dlx_cu_1.cw0[8]
+top.tb_cu_fsm.dlx_cu_1.cw0[7]
+top.tb_cu_fsm.dlx_cu_1.cw0[6]
+top.tb_cu_fsm.dlx_cu_1.cw0[5]
+top.tb_cu_fsm.dlx_cu_1.cw0[4]
+top.tb_cu_fsm.dlx_cu_1.cw0[3]
+top.tb_cu_fsm.dlx_cu_1.cw0[2]
+top.tb_cu_fsm.dlx_cu_1.cw0[1]
+top.tb_cu_fsm.dlx_cu_1.cw0[0]
+@1401200
+-group_end
+@23
+#{top.tb_cu_fsm.dlx_cu_1.cw1_next[30:0]} top.tb_cu_fsm.dlx_cu_1.cw1_next[30] top.tb_cu_fsm.dlx_cu_1.cw1_next[29] top.tb_cu_fsm.dlx_cu_1.cw1_next[28] top.tb_cu_fsm.dlx_cu_1.cw1_next[27] top.tb_cu_fsm.dlx_cu_1.cw1_next[26] top.tb_cu_fsm.dlx_cu_1.cw1_next[25] top.tb_cu_fsm.dlx_cu_1.cw1_next[24] top.tb_cu_fsm.dlx_cu_1.cw1_next[23] top.tb_cu_fsm.dlx_cu_1.cw1_next[22] top.tb_cu_fsm.dlx_cu_1.cw1_next[21] top.tb_cu_fsm.dlx_cu_1.cw1_next[20] top.tb_cu_fsm.dlx_cu_1.cw1_next[19] top.tb_cu_fsm.dlx_cu_1.cw1_next[18] top.tb_cu_fsm.dlx_cu_1.cw1_next[17] top.tb_cu_fsm.dlx_cu_1.cw1_next[16] top.tb_cu_fsm.dlx_cu_1.cw1_next[15] top.tb_cu_fsm.dlx_cu_1.cw1_next[14] top.tb_cu_fsm.dlx_cu_1.cw1_next[13] top.tb_cu_fsm.dlx_cu_1.cw1_next[12] top.tb_cu_fsm.dlx_cu_1.cw1_next[11] top.tb_cu_fsm.dlx_cu_1.cw1_next[10] top.tb_cu_fsm.dlx_cu_1.cw1_next[9] top.tb_cu_fsm.dlx_cu_1.cw1_next[8] top.tb_cu_fsm.dlx_cu_1.cw1_next[7] top.tb_cu_fsm.dlx_cu_1.cw1_next[6] top.tb_cu_fsm.dlx_cu_1.cw1_next[5] top.tb_cu_fsm.dlx_cu_1.cw1_next[4] top.tb_cu_fsm.dlx_cu_1.cw1_next[3] top.tb_cu_fsm.dlx_cu_1.cw1_next[2] top.tb_cu_fsm.dlx_cu_1.cw1_next[1] top.tb_cu_fsm.dlx_cu_1.cw1_next[0]
+@28
 top.tb_cu_fsm.pc_latch_en_s
 top.tb_cu_fsm.npc_latch_en_s
 top.tb_cu_fsm.ir_latch_en_s
 @200
 -
+-ID_STAGE
+@22
+#{top.tb_cu_fsm.dlx_cu_1.cw1_current[30:0]} top.tb_cu_fsm.dlx_cu_1.cw1_current[30] top.tb_cu_fsm.dlx_cu_1.cw1_current[29] top.tb_cu_fsm.dlx_cu_1.cw1_current[28] top.tb_cu_fsm.dlx_cu_1.cw1_current[27] top.tb_cu_fsm.dlx_cu_1.cw1_current[26] top.tb_cu_fsm.dlx_cu_1.cw1_current[25] top.tb_cu_fsm.dlx_cu_1.cw1_current[24] top.tb_cu_fsm.dlx_cu_1.cw1_current[23] top.tb_cu_fsm.dlx_cu_1.cw1_current[22] top.tb_cu_fsm.dlx_cu_1.cw1_current[21] top.tb_cu_fsm.dlx_cu_1.cw1_current[20] top.tb_cu_fsm.dlx_cu_1.cw1_current[19] top.tb_cu_fsm.dlx_cu_1.cw1_current[18] top.tb_cu_fsm.dlx_cu_1.cw1_current[17] top.tb_cu_fsm.dlx_cu_1.cw1_current[16] top.tb_cu_fsm.dlx_cu_1.cw1_current[15] top.tb_cu_fsm.dlx_cu_1.cw1_current[14] top.tb_cu_fsm.dlx_cu_1.cw1_current[13] top.tb_cu_fsm.dlx_cu_1.cw1_current[12] top.tb_cu_fsm.dlx_cu_1.cw1_current[11] top.tb_cu_fsm.dlx_cu_1.cw1_current[10] top.tb_cu_fsm.dlx_cu_1.cw1_current[9] top.tb_cu_fsm.dlx_cu_1.cw1_current[8] top.tb_cu_fsm.dlx_cu_1.cw1_current[7] top.tb_cu_fsm.dlx_cu_1.cw1_current[6] top.tb_cu_fsm.dlx_cu_1.cw1_current[5] top.tb_cu_fsm.dlx_cu_1.cw1_current[4] top.tb_cu_fsm.dlx_cu_1.cw1_current[3] top.tb_cu_fsm.dlx_cu_1.cw1_current[2] top.tb_cu_fsm.dlx_cu_1.cw1_current[1] top.tb_cu_fsm.dlx_cu_1.cw1_current[0]
 @28
-top.tb_cu_fsm.dlx_cu_1.is_id
 top.tb_cu_fsm.branch_sel_s
 top.tb_cu_fsm.jump_en_s
 top.tb_cu_fsm.jump_sel_s
@@ -59,8 +104,10 @@ top.tb_cu_fsm.rd_latch_en_id_s
 top.tb_cu_fsm.sign_sel_s
 @200
 -
+-EXE_STAGE
+@22
+#{top.tb_cu_fsm.dlx_cu_1.cw2_current[30:0]} top.tb_cu_fsm.dlx_cu_1.cw2_current[30] top.tb_cu_fsm.dlx_cu_1.cw2_current[29] top.tb_cu_fsm.dlx_cu_1.cw2_current[28] top.tb_cu_fsm.dlx_cu_1.cw2_current[27] top.tb_cu_fsm.dlx_cu_1.cw2_current[26] top.tb_cu_fsm.dlx_cu_1.cw2_current[25] top.tb_cu_fsm.dlx_cu_1.cw2_current[24] top.tb_cu_fsm.dlx_cu_1.cw2_current[23] top.tb_cu_fsm.dlx_cu_1.cw2_current[22] top.tb_cu_fsm.dlx_cu_1.cw2_current[21] top.tb_cu_fsm.dlx_cu_1.cw2_current[20] top.tb_cu_fsm.dlx_cu_1.cw2_current[19] top.tb_cu_fsm.dlx_cu_1.cw2_current[18] top.tb_cu_fsm.dlx_cu_1.cw2_current[17] top.tb_cu_fsm.dlx_cu_1.cw2_current[16] top.tb_cu_fsm.dlx_cu_1.cw2_current[15] top.tb_cu_fsm.dlx_cu_1.cw2_current[14] top.tb_cu_fsm.dlx_cu_1.cw2_current[13] top.tb_cu_fsm.dlx_cu_1.cw2_current[12] top.tb_cu_fsm.dlx_cu_1.cw2_current[11] top.tb_cu_fsm.dlx_cu_1.cw2_current[10] top.tb_cu_fsm.dlx_cu_1.cw2_current[9] top.tb_cu_fsm.dlx_cu_1.cw2_current[8] top.tb_cu_fsm.dlx_cu_1.cw2_current[7] top.tb_cu_fsm.dlx_cu_1.cw2_current[6] top.tb_cu_fsm.dlx_cu_1.cw2_current[5] top.tb_cu_fsm.dlx_cu_1.cw2_current[4] top.tb_cu_fsm.dlx_cu_1.cw2_current[3] top.tb_cu_fsm.dlx_cu_1.cw2_current[2] top.tb_cu_fsm.dlx_cu_1.cw2_current[1] top.tb_cu_fsm.dlx_cu_1.cw2_current[0]
 @28
-top.tb_cu_fsm.dlx_cu_1.is_exe
 top.tb_cu_fsm.muxb_sel_s
 #{top.tb_cu_fsm.alu_opcode_s[3:0]} top.tb_cu_fsm.alu_opcode_s[3] top.tb_cu_fsm.alu_opcode_s[2] top.tb_cu_fsm.alu_opcode_s[1] top.tb_cu_fsm.alu_opcode_s[0]
 top.tb_cu_fsm.npc_latch_en_exe_s
@@ -69,8 +116,10 @@ top.tb_cu_fsm.regb_latch_en_exe_s
 top.tb_cu_fsm.rd_latch_en_exe_s
 @200
 -
+-MEM_STAGE
+@22
+#{top.tb_cu_fsm.dlx_cu_1.cw3_current[30:0]} top.tb_cu_fsm.dlx_cu_1.cw3_current[30] top.tb_cu_fsm.dlx_cu_1.cw3_current[29] top.tb_cu_fsm.dlx_cu_1.cw3_current[28] top.tb_cu_fsm.dlx_cu_1.cw3_current[27] top.tb_cu_fsm.dlx_cu_1.cw3_current[26] top.tb_cu_fsm.dlx_cu_1.cw3_current[25] top.tb_cu_fsm.dlx_cu_1.cw3_current[24] top.tb_cu_fsm.dlx_cu_1.cw3_current[23] top.tb_cu_fsm.dlx_cu_1.cw3_current[22] top.tb_cu_fsm.dlx_cu_1.cw3_current[21] top.tb_cu_fsm.dlx_cu_1.cw3_current[20] top.tb_cu_fsm.dlx_cu_1.cw3_current[19] top.tb_cu_fsm.dlx_cu_1.cw3_current[18] top.tb_cu_fsm.dlx_cu_1.cw3_current[17] top.tb_cu_fsm.dlx_cu_1.cw3_current[16] top.tb_cu_fsm.dlx_cu_1.cw3_current[15] top.tb_cu_fsm.dlx_cu_1.cw3_current[14] top.tb_cu_fsm.dlx_cu_1.cw3_current[13] top.tb_cu_fsm.dlx_cu_1.cw3_current[12] top.tb_cu_fsm.dlx_cu_1.cw3_current[11] top.tb_cu_fsm.dlx_cu_1.cw3_current[10] top.tb_cu_fsm.dlx_cu_1.cw3_current[9] top.tb_cu_fsm.dlx_cu_1.cw3_current[8] top.tb_cu_fsm.dlx_cu_1.cw3_current[7] top.tb_cu_fsm.dlx_cu_1.cw3_current[6] top.tb_cu_fsm.dlx_cu_1.cw3_current[5] top.tb_cu_fsm.dlx_cu_1.cw3_current[4] top.tb_cu_fsm.dlx_cu_1.cw3_current[3] top.tb_cu_fsm.dlx_cu_1.cw3_current[2] top.tb_cu_fsm.dlx_cu_1.cw3_current[1] top.tb_cu_fsm.dlx_cu_1.cw3_current[0]
 @28
-top.tb_cu_fsm.dlx_cu_1.is_mem
 top.tb_cu_fsm.dram_we_s
 top.tb_cu_fsm.npc_latch_en_mem_s
 top.tb_cu_fsm.lmd_latch_en_s
@@ -78,8 +127,10 @@ top.tb_cu_fsm.alu_outreg_en_mem_s
 top.tb_cu_fsm.rd_latch_en_mem_s
 @200
 -
+-WB_STAGE
+@22
+#{top.tb_cu_fsm.dlx_cu_1.cw4_current[30:0]} top.tb_cu_fsm.dlx_cu_1.cw4_current[30] top.tb_cu_fsm.dlx_cu_1.cw4_current[29] top.tb_cu_fsm.dlx_cu_1.cw4_current[28] top.tb_cu_fsm.dlx_cu_1.cw4_current[27] top.tb_cu_fsm.dlx_cu_1.cw4_current[26] top.tb_cu_fsm.dlx_cu_1.cw4_current[25] top.tb_cu_fsm.dlx_cu_1.cw4_current[24] top.tb_cu_fsm.dlx_cu_1.cw4_current[23] top.tb_cu_fsm.dlx_cu_1.cw4_current[22] top.tb_cu_fsm.dlx_cu_1.cw4_current[21] top.tb_cu_fsm.dlx_cu_1.cw4_current[20] top.tb_cu_fsm.dlx_cu_1.cw4_current[19] top.tb_cu_fsm.dlx_cu_1.cw4_current[18] top.tb_cu_fsm.dlx_cu_1.cw4_current[17] top.tb_cu_fsm.dlx_cu_1.cw4_current[16] top.tb_cu_fsm.dlx_cu_1.cw4_current[15] top.tb_cu_fsm.dlx_cu_1.cw4_current[14] top.tb_cu_fsm.dlx_cu_1.cw4_current[13] top.tb_cu_fsm.dlx_cu_1.cw4_current[12] top.tb_cu_fsm.dlx_cu_1.cw4_current[11] top.tb_cu_fsm.dlx_cu_1.cw4_current[10] top.tb_cu_fsm.dlx_cu_1.cw4_current[9] top.tb_cu_fsm.dlx_cu_1.cw4_current[8] top.tb_cu_fsm.dlx_cu_1.cw4_current[7] top.tb_cu_fsm.dlx_cu_1.cw4_current[6] top.tb_cu_fsm.dlx_cu_1.cw4_current[5] top.tb_cu_fsm.dlx_cu_1.cw4_current[4] top.tb_cu_fsm.dlx_cu_1.cw4_current[3] top.tb_cu_fsm.dlx_cu_1.cw4_current[2] top.tb_cu_fsm.dlx_cu_1.cw4_current[1] top.tb_cu_fsm.dlx_cu_1.cw4_current[0]
 @28
-top.tb_cu_fsm.dlx_cu_1.is_wb
 #{top.tb_cu_fsm.wb_mux_sel_s[1:0]} top.tb_cu_fsm.wb_mux_sel_s[1] top.tb_cu_fsm.wb_mux_sel_s[0]
 top.tb_cu_fsm.rf_we_s
 [pattern_trace] 1
