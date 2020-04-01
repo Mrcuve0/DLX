@@ -13,7 +13,7 @@ use work.myTypes.all;
 entity dlx_cu is
   generic (
     MICROCODE_MEM_SIZE : integer := 47;   -- Microcode Memory Size (27 base)
-    ALU_OPC_MEM_SIZE   : integer := 45;    -- AluOpcode Memory Size (9 per ora)
+    ALU_OPC_MEM_SIZE   : integer := 46;    -- AluOpcode Memory Size (9 per ora)
     IR_SIZE            : integer := 32;   -- Instruction Register Size
     OPCODE_SIZE        : integer := 6;    -- Op Code Size
     FUNC_SIZE          : integer := 11;   -- Func Field Size for R-Type Ops
@@ -80,14 +80,6 @@ end dlx_cu;
 
 architecture dlx_cu_fsm of dlx_cu is
 
-  type stateType is (
-    RESET, IF_STAGE, ID_STAGE, EXE_STAGE, MEM_STAGE, WB_STAGE
-    );
-
-  signal currentState : stateType := RESET;
-  signal nextState    : stateType := IF_STAGE;
-
-
   signal OPCODE : std_logic_vector(OPCODE_SIZE - 1 downto 0);  -- OPCODE part of IR
   signal FUNC   : std_logic_vector(FUNC_SIZE - 1 downto 0);  -- Func part of IR when Rtype
 
@@ -129,7 +121,11 @@ architecture dlx_cu_fsm of dlx_cu is
   "1010010101100111001010100011101",  -- SGEI
   "0000000000000000000000000000000",
   "0000000000000000000000000000000",
+  "0000000000000000000000000000000",
+  "0000000000000000000000000000000",
+  "0000000000000000000000000000000",
   "1010010101100110010010100101011",  -- LW
+  "0000000000000000000000000000000",
   "0000000000000000000000000000000",
   "0000000000000000000000000000000",
   "0000000000000000000000000000000",
@@ -139,63 +135,59 @@ architecture dlx_cu_fsm of dlx_cu is
   "1010010111000110010011010000110",  -- SW
   "0000000000000000000000000000000",
   "0000000000000000000000000000000",
-  "0000000000000000000000000000000",
-  "0000000000000000000000000000000",
-  "0000000000000000000000000000000",
-  "0000000000000000000000000000000",
   "0000000000000000000000000000000"
   );
 
   signal aluOpcode_mem : alu_mem_array := (  -- Indirizzata da FUNC
-    "0000",
-    "0000",
-    "0000",
-    "0000",
-    "0000",                                -- SLL
-    "0001",                                -- SRL
-    "0000",
-    "0000",
-    "0000",
-    "0000",
-    "0000",
-    "0000",
-    "0000",
-    "0000",
-    "0000",
-    "0000",
-    "0000",
-    "0000",
-    "0000",
-    "0000",
-    "0000",
-    "0000",
-    "0000",
-    "0000",
-    "0000",
-    "0000",
-    "0000",
-    "0000",
-    "0000",
-    "0000",
-    "0000",
-    "0000",
-    "0010",                                -- ADD
-    "0000",
-    "0011",                                -- SUB
-    "0000",
-    "0100",                                -- AND
-    "0101",                                -- OR
-    "0110",                                -- XOR
-    "0000",
-    "0000",
-    "0111",                                -- NE
-    "0000",
-    "0000",
-    "1000",                                -- LE
-    "1001"                                 -- GE
-    );
+  "0000",
+  "0000",
+  "0000",
+  "0000",
+  "0000",                                -- SLL
+  "0000",
+  "0001",                                -- SRL
+  "0000",
+  "0000",
+  "0000",
+  "0000",
+  "0000",
+  "0000",
+  "0000",
+  "0000",
+  "0000",
+  "0000",
+  "0000",
+  "0000",
+  "0000",
+  "0000",
+  "0000",
+  "0000",
+  "0000",
+  "0000",
+  "0000",
+  "0000",
+  "0000",
+  "0000",
+  "0000",
+  "0000",
+  "0000",
+  "0010",                                -- ADD
+  "0000",
+  "0011",                                -- SUB
+  "0000",
+  "0100",                                -- AND
+  "0101",                                -- OR
+  "0110",                                -- XOR
+  "0000",
+  "0000",
+  "0111",                                -- (S)NE
+  "0000",
+  "0000",
+  "1000",                                -- (S)LE
+  "1001"                                 -- (S)GE
+  );
 
-  signal cw0, cw1, cw2, cw3, cw4 : std_logic_vector(CW_SIZE - 1 downto 0);  -- full control word read from cw_mem
+  signal cw0, cw1_current, cw1_next, cw2_current, cw2_next, cw3_current, cw3_next, cw4_current, cw4_next : std_logic_vector(CW_SIZE - 1 downto 0);  -- full control word read from cw_mem
   signal aluOpcode0, aluOpcode1, aluOpcode2 : std_logic_vector(ALU_OPC_SIZE - 1 downto 0);  -- ALU OPCODE Control Word read from aluOpcode_mem
 
 begin  -- dlx_cu_rtl
@@ -340,52 +332,55 @@ begin  -- dlx_cu_rtl
 --   RF_WE      <= cw5(CW_SIZE - 15);
 
 
-cw_retrieve: process(IR_IN)
+cw_retrieve: process(rst_n, IR_IN)
 begin
-  OPCODE(5 downto 0) <= IR_IN(31 downto 26);
-  FUNC(10 downto 0)  <= IR_IN(FUNC_SIZE - 1 downto 0);
-  
-  if OPCODE = RTYPE then
-    if (to_integer(unsigned(FUNC)) >= 0 and to_integer(unsigned(FUNC)) <= ALU_OPC_MEM_SIZE - 1) then
-      aluOpcode0 <= aluOpcode_mem(to_integer(unsigned(FUNC)));
+
+  if rst_n = '0' then
+    cw0 <=  (others =>  '0');
+  else
+    OPCODE(5 downto 0) <= IR_IN(31 downto 26);
+    FUNC(10 downto 0)  <= IR_IN(FUNC_SIZE - 1 downto 0);
+    
+    if OPCODE = RTYPE then
+      if (to_integer(unsigned(IR_IN(FUNC_SIZE - 1 downto 0))) >= 0 and to_integer(unsigned(IR_IN(FUNC_SIZE - 1 downto 0))) <= ALU_OPC_MEM_SIZE - 1) then
+        aluOpcode0 <= aluOpcode_mem(to_integer(unsigned(IR_IN(FUNC_SIZE - 1 downto 0))));
+      else
+        -- TODO: STACCAH STACCAH (throw error)
+      end if;
+    else
+      -- If I-Type, aluOpcode is hardcoded into CW (retrieved from CW_memory)
+      aluOpcode0 <= (others => '1');
+    end if;
+    
+    if (to_integer(unsigned(IR_IN(31 downto 26))) >= 0 and to_integer(unsigned(IR_IN(31 downto 26))) <= MICROCODE_MEM_SIZE - 1) then
+      cw0 <= cw_mem(to_integer(unsigned(IR_IN(31 downto 26))));
     else
       -- TODO: STACCAH STACCAH (throw error)
     end if;
-  else
-    -- If I-Type, aluOpcode is hardcoded into CW (retrieved from CW_memory)
-    aluOpcode0 <= (others => '1');
   end if;
-  
 
-  if (to_integer(unsigned(OPCODE)) >= 0 and to_integer(unsigned(OPCODE)) <= MICROCODE_MEM_SIZE - 1) then
-    cw0 <= cw_mem(to_integer(unsigned(OPCODE)));
-  else
-    -- TODO: STACCAH STACCAH (throw error)
-  end if;
-  
 end process cw_retrieve;
 
 --------------------------------------------------------------------------------
 -- IF
 --------------------------------------------------------------------------------
-IF_STAGE_proc: process(clk, rst_n, cw0, aluOpcode0)
+IF_STAGE_proc: process(clk, rst_n)
 begin
 
   if rst_n = '0' then
     Rst_IF_ID   <= '0';
-    cw1 <= (others => '0');
+    cw1_next <= (others => '0');
   else
     if rising_edge(clk) then
-      cw1 <= cw0;
+      cw1_current <=  cw1_next;
       aluOpcode1 <= aluOpcode0;
     end if;
-
     -- Combinazionale
     -- IF-Stage Control Signals
+    cw1_next <= cw0;
     PC_LATCH_EN  <= cw0(CW_SIZE - 1);  -- 27
     NPC_LATCH_EN <= cw0(CW_SIZE - 2);
     IR_LATCH_EN  <= cw0(CW_SIZE - 3);
-
   end if;
   
 end process IF_STAGE_proc;
@@ -394,31 +389,31 @@ end process IF_STAGE_proc;
 --------------------------------------------------------------------------------
 -- ID
 --------------------------------------------------------------------------------
-ID_STAGE_proc: process(clk, rst_n, cw1, aluOpcode1)
+ID_STAGE_proc: process(clk, rst_n, cw1_current, aluOpcode1)
 begin
 
   if rst_n = '0' then
     Rst_ID_EXE   <= '0';
-    cw2 <= (others => '0');
+    cw2_next <= (others => '0');
   else
     if rising_edge(clk) then
-      cw2 <= cw1;
+      cw2_current <= cw2_next;
       aluOpcode2 <= aluOpcode1;
     end if;
-
     -- Combinazionale
     -- ID-Stage Control Signals
-    BRANCH_SEL         <= cw1(CW_SIZE - 4);
-    JUMP_EN            <= cw1(CW_SIZE - 5);
-    JUMP_SEL           <= cw1(CW_SIZE - 6);
-    NPC_LATCH_EN_ID    <= cw1(CW_SIZE - 7);
-    RegA_LATCH_EN_ID   <= cw1(CW_SIZE - 8);
-    RegB_LATCH_EN_ID   <= cw1(CW_SIZE - 9);
-    RegImm_LATCH_EN_ID <= cw1(CW_SIZE - 10);
-    Rd_LATCH_EN_ID     <= cw1(CW_SIZE - 11);
-    RegMux_SEL         <= cw1(CW_SIZE - 12 downto CW_SIZE - 13);
-    Sign_SEL           <= cw1(CW_SIZE - 14);
-
+    cw2_next <=  cw1_current;
+    BRANCH_SEL         <= cw1_current(CW_SIZE - 4);
+    JUMP_EN            <= cw1_current(CW_SIZE - 5);
+    JUMP_SEL           <= cw1_current(CW_SIZE - 6);
+    NPC_LATCH_EN_ID    <= cw1_current(CW_SIZE - 7);
+    RegA_LATCH_EN_ID   <= cw1_current(CW_SIZE - 8);
+    RegB_LATCH_EN_ID   <= cw1_current(CW_SIZE - 9);
+    RegImm_LATCH_EN_ID <= cw1_current(CW_SIZE - 10);
+    Rd_LATCH_EN_ID     <= cw1_current(CW_SIZE - 11);
+    RegMux_SEL         <= cw1_current(CW_SIZE - 12 downto CW_SIZE - 13);
+    Sign_SEL           <= cw1_current(CW_SIZE - 14);
+    
   end if;
 
 end process ID_STAGE_proc;
@@ -427,30 +422,31 @@ end process ID_STAGE_proc;
 --------------------------------------------------------------------------------
 -- EXE
 --------------------------------------------------------------------------------
-EXE_STAGE_proc: process(clk, rst_n, cw2, aluOpcode2)
+EXE_STAGE_proc: process(clk, rst_n, cw2_current, aluOpcode2)
 begin
 
   if rst_n = '0' then
     Rst_EXE_MEM   <= '0';
-    cw3 <= (others => '0');
+    cw3_next <= (others => '0');
   else
     if rising_edge(clk) then
-      cw3 <= cw2;
+      cw3_current <= cw3_next;
     end if;
 
     -- Combinazionale
     -- EXE-Stage Control Signals
-    MuxB_SEL          <= cw2(CW_SIZE - 15);
+    cw3_next <= cw2_current;
+    MuxB_SEL          <= cw2_current(CW_SIZE - 15);
     -- Alu Operation Code
     if aluOpcode2 = "1111" then
-      ALU_OPCODE <= cw2(CW_SIZE - 16 downto CW_SIZE - 19);
+      ALU_OPCODE <= cw2_current(CW_SIZE - 16 downto CW_SIZE - 19);
     else
       ALU_OPCODE <= aluOpcode2;
     end if;
-    NPC_LATCH_EN_EXE  <= cw2(CW_SIZE - 20);
-    ALU_OUTREG_EN_EXE <= cw2(CW_SIZE - 21);
-    RegB_LATCH_EN_EXE <= cw2(CW_SIZE - 22);
-    RD_LATCH_EN_EXE   <= cw2(CW_SIZE - 23);
+    NPC_LATCH_EN_EXE  <= cw2_current(CW_SIZE - 20);
+    ALU_OUTREG_EN_EXE <= cw2_current(CW_SIZE - 21);
+    RegB_LATCH_EN_EXE <= cw2_current(CW_SIZE - 22);
+    RD_LATCH_EN_EXE   <= cw2_current(CW_SIZE - 23);
   end if;
   
 end process EXE_STAGE_proc;
@@ -459,24 +455,25 @@ end process EXE_STAGE_proc;
 --------------------------------------------------------------------------------
 -- MEM
 --------------------------------------------------------------------------------
-MEM_STAGE_proc: process(clk, rst_n, cw3)
+MEM_STAGE_proc: process(clk, rst_n, cw3_current)
 begin
 
   if rst_n = '0' then
     Rst_MEM_WB   <= '0';
-    cw4 <= (others => '0');
+    cw4_next <= (others => '0');
   else
     if rising_edge(clk) then
-      cw4 <= cw3;
+      cw4_current <= cw4_next;
     end if;
 
     -- Combinazionale
     -- MEM-Stage Control Signals
-    DRAM_WE           <= cw3(CW_SIZE - 24);
-    NPC_LATCH_EN_MEM  <= cw3(CW_SIZE - 25);
-    LMD_LATCH_EN      <= cw3(CW_SIZE - 26);
-    ALU_OUTREG_EN_MEM <= cw3(CW_SIZE - 27);
-    RD_LATCH_EN_MEM   <= cw3(CW_SIZE - 28);
+    cw4_next <= cw3_current;
+    DRAM_WE           <= cw3_current(CW_SIZE - 24);
+    NPC_LATCH_EN_MEM  <= cw3_current(CW_SIZE - 25);
+    LMD_LATCH_EN      <= cw3_current(CW_SIZE - 26);
+    ALU_OUTREG_EN_MEM <= cw3_current(CW_SIZE - 27);
+    RD_LATCH_EN_MEM   <= cw3_current(CW_SIZE - 28);
         
   end if;
   
@@ -485,20 +482,19 @@ end process MEM_STAGE_proc;
 --------------------------------------------------------------------------------
 -- WB
 --------------------------------------------------------------------------------
-WB_STAGE_proc: process(clk, rst_n, cw4)
+WB_STAGE_proc: process(clk, rst_n, cw4_current)
 begin
 
   if rst_n = '0' then
     
   else
     if rising_edge(clk) then
-
     end if;
 
     -- Combinazionale
     -- WB Control signals
-    WB_MUX_SEL <= cw4(CW_SIZE - 29 downto CW_SIZE - 30);
-    RF_WE      <= cw4(CW_SIZE - 31);
+    WB_MUX_SEL <= cw4_current(CW_SIZE - 29 downto CW_SIZE - 30);
+    RF_WE      <= cw4_current(CW_SIZE - 31);
   end if;
   
 end process WB_STAGE_proc;

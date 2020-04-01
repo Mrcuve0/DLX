@@ -1,44 +1,52 @@
 [*]
 [*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
-[*] Mon Mar 30 17:51:14 2020
+[*] Wed Apr  1 15:25:06 2020
 [*]
-[dumpfile] "/home/sem/OneDrive/Politecnico di Torino/01 - Magistrale/Anno 1 -- 2018-2019/Secondo Semestre/Microelectronic System/2019-2020/DLX/src/tb/CU_DLX.ghw"
-[dumpfile_mtime] "Mon Mar 30 17:48:16 2020"
-[dumpfile_size] 8208
-[savefile] "/home/sem/OneDrive/Politecnico di Torino/01 - Magistrale/Anno 1 -- 2018-2019/Secondo Semestre/Microelectronic System/2019-2020/DLX/src/tb/GTKWaveSavefile.gtkw"
+[dumpfile] "/home/sem/OneDrive/Politecnico di Torino/01 - Magistrale/Anno 1 -- 2018-2019/Secondo Semestre/Microelectronic System/2019-2020/DLX/sim/CU/CU_DLX.ghw"
+[dumpfile_mtime] "Wed Apr  1 15:23:25 2020"
+[dumpfile_size] 18552
+[savefile] "/home/sem/OneDrive/Politecnico di Torino/01 - Magistrale/Anno 1 -- 2018-2019/Secondo Semestre/Microelectronic System/2019-2020/DLX/sim/CU/GTKWaveSavefile.gtkw"
 [timestart] 0
 [size] 1680 997
 [pos] -1 -1
-*-21.000000 5000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-21.514366 3000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] top.
 [treeopen] top.tb_cu_fsm.
-[sst_width] 199
+[treeopen] top.tb_cu_fsm.dlx_cu_1.
+[sst_width] 264
 [signals_width] 323
 [sst_expanded] 1
-[sst_vpaned_height] 297
+[sst_vpaned_height] 540
 @28
 top.tb_cu_fsm.clk_s
 top.tb_cu_fsm.rst_n_s
+@22
+#{top.tb_cu_fsm.opname_s[1:5]} top.tb_cu_fsm.opname_s[1] top.tb_cu_fsm.opname_s[2] top.tb_cu_fsm.opname_s[3] top.tb_cu_fsm.opname_s[4] top.tb_cu_fsm.opname_s[5]
 @200
 -
 @22
 #{top.tb_cu_fsm.ir_in_s[31:0]} top.tb_cu_fsm.ir_in_s[31] top.tb_cu_fsm.ir_in_s[30] top.tb_cu_fsm.ir_in_s[29] top.tb_cu_fsm.ir_in_s[28] top.tb_cu_fsm.ir_in_s[27] top.tb_cu_fsm.ir_in_s[26] top.tb_cu_fsm.ir_in_s[25] top.tb_cu_fsm.ir_in_s[24] top.tb_cu_fsm.ir_in_s[23] top.tb_cu_fsm.ir_in_s[22] top.tb_cu_fsm.ir_in_s[21] top.tb_cu_fsm.ir_in_s[20] top.tb_cu_fsm.ir_in_s[19] top.tb_cu_fsm.ir_in_s[18] top.tb_cu_fsm.ir_in_s[17] top.tb_cu_fsm.ir_in_s[16] top.tb_cu_fsm.ir_in_s[15] top.tb_cu_fsm.ir_in_s[14] top.tb_cu_fsm.ir_in_s[13] top.tb_cu_fsm.ir_in_s[12] top.tb_cu_fsm.ir_in_s[11] top.tb_cu_fsm.ir_in_s[10] top.tb_cu_fsm.ir_in_s[9] top.tb_cu_fsm.ir_in_s[8] top.tb_cu_fsm.ir_in_s[7] top.tb_cu_fsm.ir_in_s[6] top.tb_cu_fsm.ir_in_s[5] top.tb_cu_fsm.ir_in_s[4] top.tb_cu_fsm.ir_in_s[3] top.tb_cu_fsm.ir_in_s[2] top.tb_cu_fsm.ir_in_s[1] top.tb_cu_fsm.ir_in_s[0]
-@201
+#{top.tb_cu_fsm.obtainedcw_s[30:0]} top.tb_cu_fsm.obtainedcw_s[30] top.tb_cu_fsm.obtainedcw_s[29] top.tb_cu_fsm.obtainedcw_s[28] top.tb_cu_fsm.obtainedcw_s[27] top.tb_cu_fsm.obtainedcw_s[26] top.tb_cu_fsm.obtainedcw_s[25] top.tb_cu_fsm.obtainedcw_s[24] top.tb_cu_fsm.obtainedcw_s[23] top.tb_cu_fsm.obtainedcw_s[22] top.tb_cu_fsm.obtainedcw_s[21] top.tb_cu_fsm.obtainedcw_s[20] top.tb_cu_fsm.obtainedcw_s[19] top.tb_cu_fsm.obtainedcw_s[18] top.tb_cu_fsm.obtainedcw_s[17] top.tb_cu_fsm.obtainedcw_s[16] top.tb_cu_fsm.obtainedcw_s[15] top.tb_cu_fsm.obtainedcw_s[14] top.tb_cu_fsm.obtainedcw_s[13] top.tb_cu_fsm.obtainedcw_s[12] top.tb_cu_fsm.obtainedcw_s[11] top.tb_cu_fsm.obtainedcw_s[10] top.tb_cu_fsm.obtainedcw_s[9] top.tb_cu_fsm.obtainedcw_s[8] top.tb_cu_fsm.obtainedcw_s[7] top.tb_cu_fsm.obtainedcw_s[6] top.tb_cu_fsm.obtainedcw_s[5] top.tb_cu_fsm.obtainedcw_s[4] top.tb_cu_fsm.obtainedcw_s[3] top.tb_cu_fsm.obtainedcw_s[2] top.tb_cu_fsm.obtainedcw_s[1] top.tb_cu_fsm.obtainedcw_s[0]
+@200
 -
 @28
 top.tb_cu_fsm.rst_if_id_s
 top.tb_cu_fsm.rst_id_exe_s
+@29
 top.tb_cu_fsm.rst_exe_mem_s
+@28
 top.tb_cu_fsm.rst_mem_wb_s
 @200
 -
 @28
+top.tb_cu_fsm.dlx_cu_1.is_if
 top.tb_cu_fsm.pc_latch_en_s
 top.tb_cu_fsm.npc_latch_en_s
 top.tb_cu_fsm.ir_latch_en_s
 @200
 -
 @28
+top.tb_cu_fsm.dlx_cu_1.is_id
 top.tb_cu_fsm.branch_sel_s
 top.tb_cu_fsm.jump_en_s
 top.tb_cu_fsm.jump_sel_s
@@ -52,10 +60,9 @@ top.tb_cu_fsm.sign_sel_s
 @200
 -
 @28
+top.tb_cu_fsm.dlx_cu_1.is_exe
 top.tb_cu_fsm.muxb_sel_s
-@22
 #{top.tb_cu_fsm.alu_opcode_s[3:0]} top.tb_cu_fsm.alu_opcode_s[3] top.tb_cu_fsm.alu_opcode_s[2] top.tb_cu_fsm.alu_opcode_s[1] top.tb_cu_fsm.alu_opcode_s[0]
-@28
 top.tb_cu_fsm.npc_latch_en_exe_s
 top.tb_cu_fsm.alu_outreg_en_exe_s
 top.tb_cu_fsm.regb_latch_en_exe_s
@@ -63,6 +70,7 @@ top.tb_cu_fsm.rd_latch_en_exe_s
 @200
 -
 @28
+top.tb_cu_fsm.dlx_cu_1.is_mem
 top.tb_cu_fsm.dram_we_s
 top.tb_cu_fsm.npc_latch_en_mem_s
 top.tb_cu_fsm.lmd_latch_en_s
@@ -71,6 +79,7 @@ top.tb_cu_fsm.rd_latch_en_mem_s
 @200
 -
 @28
+top.tb_cu_fsm.dlx_cu_1.is_wb
 #{top.tb_cu_fsm.wb_mux_sel_s[1:0]} top.tb_cu_fsm.wb_mux_sel_s[1] top.tb_cu_fsm.wb_mux_sel_s[0]
 top.tb_cu_fsm.rf_we_s
 [pattern_trace] 1
