@@ -16,7 +16,7 @@ def main():
     subprocess.call("ghdl -e " + "dlx_cu", shell=True)
     subprocess.call("ghdl -e " + synLib + " " + "TB_CU_FSM", shell=True)
 
-    subprocess.call("./tb_cu_fsm --stop-time=140ns --wave=CU_DLX.ghw --vcd=CU_DLX.vcd", shell=True)
+    subprocess.call("./tb_cu_fsm --stop-time=400ns --wave=CU_DLX.ghw --vcd=CU_DLX.vcd", shell=True)
 
 if __name__ == "__main__":
     main()

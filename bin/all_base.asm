@@ -21,3 +21,8 @@ subi r7,r9,#-30
 sw 63(r8),r19
 xor r6,r12,r15
 xori r6,r12,#1
+j 0x00000000
+jal 0x00000000
+beqz r1,0x00000000
+bnez r1,0x00000000
+

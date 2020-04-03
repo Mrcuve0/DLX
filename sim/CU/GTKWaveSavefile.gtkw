@@ -1,19 +1,19 @@
 [*]
 [*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
-[*] Fri Apr  3 15:09:11 2020
+[*] Fri Apr  3 16:47:03 2020
 [*]
 [dumpfile] "/home/sem/OneDrive/Politecnico di Torino/01 - Magistrale/Anno 1 -- 2018-2019/Secondo Semestre/Microelectronic System/2019-2020/DLX/sim/CU/CU_DLX.ghw"
-[dumpfile_mtime] "Fri Apr  3 15:04:13 2020"
-[dumpfile_size] 21038
+[dumpfile_mtime] "Fri Apr  3 16:38:10 2020"
+[dumpfile_size] 23759
 [savefile] "/home/sem/OneDrive/Politecnico di Torino/01 - Magistrale/Anno 1 -- 2018-2019/Secondo Semestre/Microelectronic System/2019-2020/DLX/sim/CU/GTKWaveSavefile.gtkw"
-[timestart] 24530000
+[timestart] 202200000
 [size] 1680 997
 [pos] -1 -1
-*-21.514366 31000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-24.514366 163450000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] top.
 [treeopen] top.tb_cu_fsm.
 [treeopen] top.tb_cu_fsm.dlx_cu_1.
-[sst_width] 259
+[sst_width] 200
 [signals_width] 317
 [sst_expanded] 1
 [sst_vpaned_height] 484
@@ -30,14 +30,12 @@ top.tb_cu_fsm.rst_n_s
 #{top.tb_cu_fsm.dlx_cu_1.alu_opcode[3:0]} top.tb_cu_fsm.dlx_cu_1.alu_opcode[3] top.tb_cu_fsm.dlx_cu_1.alu_opcode[2] top.tb_cu_fsm.dlx_cu_1.alu_opcode[1] top.tb_cu_fsm.dlx_cu_1.alu_opcode[0]
 @200
 -
-@22
-#{top.tb_cu_fsm.obtainedcw_s[30:0]} top.tb_cu_fsm.obtainedcw_s[30] top.tb_cu_fsm.obtainedcw_s[29] top.tb_cu_fsm.obtainedcw_s[28] top.tb_cu_fsm.obtainedcw_s[27] top.tb_cu_fsm.obtainedcw_s[26] top.tb_cu_fsm.obtainedcw_s[25] top.tb_cu_fsm.obtainedcw_s[24] top.tb_cu_fsm.obtainedcw_s[23] top.tb_cu_fsm.obtainedcw_s[22] top.tb_cu_fsm.obtainedcw_s[21] top.tb_cu_fsm.obtainedcw_s[20] top.tb_cu_fsm.obtainedcw_s[19] top.tb_cu_fsm.obtainedcw_s[18] top.tb_cu_fsm.obtainedcw_s[17] top.tb_cu_fsm.obtainedcw_s[16] top.tb_cu_fsm.obtainedcw_s[15] top.tb_cu_fsm.obtainedcw_s[14] top.tb_cu_fsm.obtainedcw_s[13] top.tb_cu_fsm.obtainedcw_s[12] top.tb_cu_fsm.obtainedcw_s[11] top.tb_cu_fsm.obtainedcw_s[10] top.tb_cu_fsm.obtainedcw_s[9] top.tb_cu_fsm.obtainedcw_s[8] top.tb_cu_fsm.obtainedcw_s[7] top.tb_cu_fsm.obtainedcw_s[6] top.tb_cu_fsm.obtainedcw_s[5] top.tb_cu_fsm.obtainedcw_s[4] top.tb_cu_fsm.obtainedcw_s[3] top.tb_cu_fsm.obtainedcw_s[2] top.tb_cu_fsm.obtainedcw_s[1] top.tb_cu_fsm.obtainedcw_s[0]
-@200
 -
 @28
 top.tb_cu_fsm.rst_if_id_s
 top.tb_cu_fsm.rst_id_exe_s
 top.tb_cu_fsm.rst_exe_mem_s
+@29
 top.tb_cu_fsm.rst_mem_wb_s
 @200
 -
@@ -114,9 +112,7 @@ top.tb_cu_fsm.sign_sel_s
 #{top.tb_cu_fsm.dlx_cu_1.cw2_current[30:0]} top.tb_cu_fsm.dlx_cu_1.cw2_current[30] top.tb_cu_fsm.dlx_cu_1.cw2_current[29] top.tb_cu_fsm.dlx_cu_1.cw2_current[28] top.tb_cu_fsm.dlx_cu_1.cw2_current[27] top.tb_cu_fsm.dlx_cu_1.cw2_current[26] top.tb_cu_fsm.dlx_cu_1.cw2_current[25] top.tb_cu_fsm.dlx_cu_1.cw2_current[24] top.tb_cu_fsm.dlx_cu_1.cw2_current[23] top.tb_cu_fsm.dlx_cu_1.cw2_current[22] top.tb_cu_fsm.dlx_cu_1.cw2_current[21] top.tb_cu_fsm.dlx_cu_1.cw2_current[20] top.tb_cu_fsm.dlx_cu_1.cw2_current[19] top.tb_cu_fsm.dlx_cu_1.cw2_current[18] top.tb_cu_fsm.dlx_cu_1.cw2_current[17] top.tb_cu_fsm.dlx_cu_1.cw2_current[16] top.tb_cu_fsm.dlx_cu_1.cw2_current[15] top.tb_cu_fsm.dlx_cu_1.cw2_current[14] top.tb_cu_fsm.dlx_cu_1.cw2_current[13] top.tb_cu_fsm.dlx_cu_1.cw2_current[12] top.tb_cu_fsm.dlx_cu_1.cw2_current[11] top.tb_cu_fsm.dlx_cu_1.cw2_current[10] top.tb_cu_fsm.dlx_cu_1.cw2_current[9] top.tb_cu_fsm.dlx_cu_1.cw2_current[8] top.tb_cu_fsm.dlx_cu_1.cw2_current[7] top.tb_cu_fsm.dlx_cu_1.cw2_current[6] top.tb_cu_fsm.dlx_cu_1.cw2_current[5] top.tb_cu_fsm.dlx_cu_1.cw2_current[4] top.tb_cu_fsm.dlx_cu_1.cw2_current[3] top.tb_cu_fsm.dlx_cu_1.cw2_current[2] top.tb_cu_fsm.dlx_cu_1.cw2_current[1] top.tb_cu_fsm.dlx_cu_1.cw2_current[0]
 @28
 #{top.tb_cu_fsm.dlx_cu_1.aluopcode2_current[3:0]} top.tb_cu_fsm.dlx_cu_1.aluopcode2_current[3] top.tb_cu_fsm.dlx_cu_1.aluopcode2_current[2] top.tb_cu_fsm.dlx_cu_1.aluopcode2_current[1] top.tb_cu_fsm.dlx_cu_1.aluopcode2_current[0]
-@29
 #{top.tb_cu_fsm.dlx_cu_1.alu_opcode[3:0]} top.tb_cu_fsm.dlx_cu_1.alu_opcode[3] top.tb_cu_fsm.dlx_cu_1.alu_opcode[2] top.tb_cu_fsm.dlx_cu_1.alu_opcode[1] top.tb_cu_fsm.dlx_cu_1.alu_opcode[0]
-@28
 top.tb_cu_fsm.muxb_sel_s
 top.tb_cu_fsm.npc_latch_en_exe_s
 top.tb_cu_fsm.alu_outreg_en_exe_s
