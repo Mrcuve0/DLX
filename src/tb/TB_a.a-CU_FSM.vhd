@@ -77,7 +77,7 @@ architecture TB_arch of TB_CU_FSM is
     type mem_array_s is array (integer range 0 to MICROCODE_MEM_SIZE - 1) of std_logic_vector(CW_SIZE - 1 downto 0);
     type alu_mem_array_s is array (integer range 0 to ALU_OPC_MEM_SIZE - 1) of std_logic_vector(ALU_OPC_SIZE - 1 downto 0);
   
-    signal cw_mem : mem_array := (
+    signal cw_mem : mem_array_s := (
     "1010010110101001010010100011101",  -- R type
     "0000000000000000000000000000000",
     "1110110000011101010000000000110",  -- J (0X02) instruction encoding corresponds to the address to this ROM

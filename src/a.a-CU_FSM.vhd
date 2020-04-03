@@ -188,7 +188,7 @@ architecture dlx_cu_fsm of dlx_cu is
   );
 
   signal cw0, cw1_current, cw1_next, cw2_current, cw2_next, cw3_current, cw3_next, cw4_current, cw4_next : std_logic_vector(CW_SIZE - 1 downto 0);  -- full control word read from cw_mem
-  signal aluOpcode0, aluOpcode1, aluOpcode2 : std_logic_vector(ALU_OPC_SIZE - 1 downto 0);  -- ALU OPCODE Control Word read from aluOpcode_mem
+  signal aluOpcode0, aluOpcode1_current, aluOpcode1_next, aluOpcode2_current, aluOpcode2_next : std_logic_vector(ALU_OPC_SIZE - 1 downto 0);  -- ALU OPCODE Control Word read from aluOpcode_mem
 
 begin  -- dlx_cu_rtl
 
@@ -338,10 +338,8 @@ begin
   if rst_n = '0' then
     cw0 <=  (others =>  '0');
   else
-    OPCODE(5 downto 0) <= IR_IN(31 downto 26);
-    FUNC(10 downto 0)  <= IR_IN(FUNC_SIZE - 1 downto 0);
     
-    if OPCODE = RTYPE then
+    if IR_IN(31 downto 26) = RTYPE then
       if (to_integer(unsigned(IR_IN(FUNC_SIZE - 1 downto 0))) >= 0 and to_integer(unsigned(IR_IN(FUNC_SIZE - 1 downto 0))) <= ALU_OPC_MEM_SIZE - 1) then
         aluOpcode0 <= aluOpcode_mem(to_integer(unsigned(IR_IN(FUNC_SIZE - 1 downto 0))));
       else
@@ -373,11 +371,12 @@ begin
   else
     if rising_edge(clk) then
       cw1_current <=  cw1_next;
-      aluOpcode1 <= aluOpcode0;
+      aluOpcode1_current <= aluOpcode1_next;
     end if;
     -- Combinazionale
     -- IF-Stage Control Signals
     cw1_next <= cw0;
+    aluOpcode1_next <= aluOpcode0;
     PC_LATCH_EN  <= cw0(CW_SIZE - 1);  -- 27
     NPC_LATCH_EN <= cw0(CW_SIZE - 2);
     IR_LATCH_EN  <= cw0(CW_SIZE - 3);
@@ -389,7 +388,7 @@ end process IF_STAGE_proc;
 --------------------------------------------------------------------------------
 -- ID
 --------------------------------------------------------------------------------
-ID_STAGE_proc: process(clk, rst_n, cw1_current, aluOpcode1)
+ID_STAGE_proc: process(clk, rst_n, cw1_current, aluOpcode1_current)
 begin
 
   if rst_n = '0' then
@@ -398,11 +397,12 @@ begin
   else
     if rising_edge(clk) then
       cw2_current <= cw2_next;
-      aluOpcode2 <= aluOpcode1;
+      aluOpcode2_current <= aluOpcode2_next;
     end if;
     -- Combinazionale
     -- ID-Stage Control Signals
     cw2_next <=  cw1_current;
+    aluOpcode2_next <= aluOpcode1_current;
     BRANCH_SEL         <= cw1_current(CW_SIZE - 4);
     JUMP_EN            <= cw1_current(CW_SIZE - 5);
     JUMP_SEL           <= cw1_current(CW_SIZE - 6);
@@ -422,7 +422,7 @@ end process ID_STAGE_proc;
 --------------------------------------------------------------------------------
 -- EXE
 --------------------------------------------------------------------------------
-EXE_STAGE_proc: process(clk, rst_n, cw2_current, aluOpcode2)
+EXE_STAGE_proc: process(clk, rst_n, cw2_current, aluOpcode2_current)
 begin
 
   if rst_n = '0' then
@@ -438,10 +438,10 @@ begin
     cw3_next <= cw2_current;
     MuxB_SEL          <= cw2_current(CW_SIZE - 15);
     -- Alu Operation Code
-    if aluOpcode2 = "1111" then
+    if aluOpcode2_current = "1111" then
       ALU_OPCODE <= cw2_current(CW_SIZE - 16 downto CW_SIZE - 19);
     else
-      ALU_OPCODE <= aluOpcode2;
+      ALU_OPCODE <= aluOpcode2_current;
     end if;
     NPC_LATCH_EN_EXE  <= cw2_current(CW_SIZE - 20);
     ALU_OUTREG_EN_EXE <= cw2_current(CW_SIZE - 21);
