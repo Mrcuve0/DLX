@@ -12,5 +12,7 @@
 *.cf
 *.ghw
 *.vcd
+*log
+*svf
 *.~*
 .hdl_checker/
