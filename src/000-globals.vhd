@@ -95,5 +95,15 @@ package myTypes is
     ALU_NOP
   );
 
+
+  --   _____ ______ 
+  --  |_   _|  ____|
+  --    | | | |__   
+  --    | | |  __|  
+  --   _| |_| |     
+  --  |_____|_|     
+  --                
+  constant nDataBit : integer := 32;
+
 end myTypes;
 
