@@ -1,0 +1,31 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Wed Aug  5 14:52:17 2020
+[*]
+[dumpfile] "/home/sem/OneDrive/Politecnico di Torino/01 - Magistrale/Anno 1 -- 2018-2019/Secondo Semestre/Microelectronic System/2019-2020/DLX/src/adder+SparseTree/CLA/sim/CLA.ghw"
+[dumpfile_mtime] "Wed Aug  5 14:48:05 2020"
+[dumpfile_size] 9409
+[savefile] "/home/sem/OneDrive/Politecnico di Torino/01 - Magistrale/Anno 1 -- 2018-2019/Secondo Semestre/Microelectronic System/2019-2020/DLX/src/adder+SparseTree/CLA/sim/SavefileCLA.gtkw"
+[timestart] 0
+[size] 1920 1029
+[pos] -461 -215
+*-23.496473 1299000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.tb_cla.
+[sst_width] 194
+[signals_width] 377
+[sst_expanded] 1
+[sst_vpaned_height] 314
+@22
+#{top.tb_cla.operand_a_s[31:0]} top.tb_cla.operand_a_s[31] top.tb_cla.operand_a_s[30] top.tb_cla.operand_a_s[29] top.tb_cla.operand_a_s[28] top.tb_cla.operand_a_s[27] top.tb_cla.operand_a_s[26] top.tb_cla.operand_a_s[25] top.tb_cla.operand_a_s[24] top.tb_cla.operand_a_s[23] top.tb_cla.operand_a_s[22] top.tb_cla.operand_a_s[21] top.tb_cla.operand_a_s[20] top.tb_cla.operand_a_s[19] top.tb_cla.operand_a_s[18] top.tb_cla.operand_a_s[17] top.tb_cla.operand_a_s[16] top.tb_cla.operand_a_s[15] top.tb_cla.operand_a_s[14] top.tb_cla.operand_a_s[13] top.tb_cla.operand_a_s[12] top.tb_cla.operand_a_s[11] top.tb_cla.operand_a_s[10] top.tb_cla.operand_a_s[9] top.tb_cla.operand_a_s[8] top.tb_cla.operand_a_s[7] top.tb_cla.operand_a_s[6] top.tb_cla.operand_a_s[5] top.tb_cla.operand_a_s[4] top.tb_cla.operand_a_s[3] top.tb_cla.operand_a_s[2] top.tb_cla.operand_a_s[1] top.tb_cla.operand_a_s[0]
+#{top.tb_cla.operand_b_s[31:0]} top.tb_cla.operand_b_s[31] top.tb_cla.operand_b_s[30] top.tb_cla.operand_b_s[29] top.tb_cla.operand_b_s[28] top.tb_cla.operand_b_s[27] top.tb_cla.operand_b_s[26] top.tb_cla.operand_b_s[25] top.tb_cla.operand_b_s[24] top.tb_cla.operand_b_s[23] top.tb_cla.operand_b_s[22] top.tb_cla.operand_b_s[21] top.tb_cla.operand_b_s[20] top.tb_cla.operand_b_s[19] top.tb_cla.operand_b_s[18] top.tb_cla.operand_b_s[17] top.tb_cla.operand_b_s[16] top.tb_cla.operand_b_s[15] top.tb_cla.operand_b_s[14] top.tb_cla.operand_b_s[13] top.tb_cla.operand_b_s[12] top.tb_cla.operand_b_s[11] top.tb_cla.operand_b_s[10] top.tb_cla.operand_b_s[9] top.tb_cla.operand_b_s[8] top.tb_cla.operand_b_s[7] top.tb_cla.operand_b_s[6] top.tb_cla.operand_b_s[5] top.tb_cla.operand_b_s[4] top.tb_cla.operand_b_s[3] top.tb_cla.operand_b_s[2] top.tb_cla.operand_b_s[1] top.tb_cla.operand_b_s[0]
+@28
+top.tb_cla.cla_1.cin
+@201
+-
+@22
+#{top.tb_cla.sum_s[31:0]} top.tb_cla.sum_s[31] top.tb_cla.sum_s[30] top.tb_cla.sum_s[29] top.tb_cla.sum_s[28] top.tb_cla.sum_s[27] top.tb_cla.sum_s[26] top.tb_cla.sum_s[25] top.tb_cla.sum_s[24] top.tb_cla.sum_s[23] top.tb_cla.sum_s[22] top.tb_cla.sum_s[21] top.tb_cla.sum_s[20] top.tb_cla.sum_s[19] top.tb_cla.sum_s[18] top.tb_cla.sum_s[17] top.tb_cla.sum_s[16] top.tb_cla.sum_s[15] top.tb_cla.sum_s[14] top.tb_cla.sum_s[13] top.tb_cla.sum_s[12] top.tb_cla.sum_s[11] top.tb_cla.sum_s[10] top.tb_cla.sum_s[9] top.tb_cla.sum_s[8] top.tb_cla.sum_s[7] top.tb_cla.sum_s[6] top.tb_cla.sum_s[5] top.tb_cla.sum_s[4] top.tb_cla.sum_s[3] top.tb_cla.sum_s[2] top.tb_cla.sum_s[1] top.tb_cla.sum_s[0]
+@28
+top.tb_cla.cla_1.cout
+[pattern_trace] 1
+[pattern_trace] 0

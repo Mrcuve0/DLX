@@ -1,0 +1,20 @@
+--> IF: Adder: provare carry lookahead adder (pag 102 slide Graziano)
+Confrontare area e delay con Sparse Tree (sintesi entro il 7 Luglio)
+
+--> Completare l'IF top level entity (simula ecc)
+--> Interfaccia IF/ID con solo i registri tra Fetch e Decode
+
+--> ID: fare struttura che gestisce i branch (Adder, Comp ecc...)
+--> ID: (Windowed) Register File rimandato a più tardi
+
+--> EXE:    Mettere assieme lo Sparse Tree
+            Blocco logica (AND, NOT, bitwise ecc)
+            Multiplier (Pro)
+            Shifter (guardare generic shifter fornito da loro)
+            Comparator (>, <, = ecc)
+            Divider (Pro)
+
+--> MEM:    Memoria? Come implementarla, come simularla, NON dobbiamo sintetizzarla
+            Appunti di Camurati
+
+--> WB:     MUX
