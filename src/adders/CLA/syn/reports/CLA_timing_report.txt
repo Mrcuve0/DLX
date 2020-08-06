@@ -1,0 +1,180 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : CLA_N32
+Version: F-2011.09-SP3
+Date   : Thu Aug  6 19:00:05 2020
+****************************************
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: operand_a[0]
+              (input port)
+  Endpoint: sum[31] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  CLA_N32            5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  input external delay                                    0.00       0.00 f
+  operand_a[0] (in)                                       0.00       0.00 f
+  PGLogic_1/operand_a[0] (PGLogic_N32)                    0.00       0.00 f
+  PGLogic_1/U32/Z (XOR2_X1)                               0.08       0.08 f
+  PGLogic_1/prop[0] (PGLogic_N32)                         0.00       0.08 f
+  CarryGen_Array_1/prop[0] (CarryGen_Array_N32)           0.00       0.08 f
+  CarryGen_Array_1/block_0_0/prop (CarryGen_Block_0)      0.00       0.08 f
+  CarryGen_Array_1/block_0_0/U2/ZN (AOI21_X1)             0.04       0.12 r
+  CarryGen_Array_1/block_0_0/U1/ZN (INV_X1)               0.03       0.15 f
+  CarryGen_Array_1/block_0_0/Cout (CarryGen_Block_0)      0.00       0.15 f
+  CarryGen_Array_1/block_i_1/Cin (CarryGen_Block_31)      0.00       0.15 f
+  CarryGen_Array_1/block_i_1/U2/ZN (AOI21_X1)             0.05       0.20 r
+  CarryGen_Array_1/block_i_1/U1/ZN (INV_X1)               0.03       0.22 f
+  CarryGen_Array_1/block_i_1/Cout (CarryGen_Block_31)     0.00       0.22 f
+  CarryGen_Array_1/block_i_2/Cin (CarryGen_Block_30)      0.00       0.22 f
+  CarryGen_Array_1/block_i_2/U2/ZN (AOI21_X1)             0.05       0.27 r
+  CarryGen_Array_1/block_i_2/U1/ZN (INV_X1)               0.03       0.30 f
+  CarryGen_Array_1/block_i_2/Cout (CarryGen_Block_30)     0.00       0.30 f
+  CarryGen_Array_1/block_i_3/Cin (CarryGen_Block_29)      0.00       0.30 f
+  CarryGen_Array_1/block_i_3/U2/ZN (AOI21_X1)             0.05       0.35 r
+  CarryGen_Array_1/block_i_3/U1/ZN (INV_X1)               0.03       0.37 f
+  CarryGen_Array_1/block_i_3/Cout (CarryGen_Block_29)     0.00       0.37 f
+  CarryGen_Array_1/block_i_4/Cin (CarryGen_Block_28)      0.00       0.37 f
+  CarryGen_Array_1/block_i_4/U2/ZN (AOI21_X1)             0.05       0.42 r
+  CarryGen_Array_1/block_i_4/U1/ZN (INV_X1)               0.03       0.45 f
+  CarryGen_Array_1/block_i_4/Cout (CarryGen_Block_28)     0.00       0.45 f
+  CarryGen_Array_1/block_i_5/Cin (CarryGen_Block_27)      0.00       0.45 f
+  CarryGen_Array_1/block_i_5/U2/ZN (AOI21_X1)             0.05       0.50 r
+  CarryGen_Array_1/block_i_5/U1/ZN (INV_X1)               0.03       0.52 f
+  CarryGen_Array_1/block_i_5/Cout (CarryGen_Block_27)     0.00       0.52 f
+  CarryGen_Array_1/block_i_6/Cin (CarryGen_Block_26)      0.00       0.52 f
+  CarryGen_Array_1/block_i_6/U2/ZN (AOI21_X1)             0.05       0.57 r
+  CarryGen_Array_1/block_i_6/U1/ZN (INV_X1)               0.03       0.60 f
+  CarryGen_Array_1/block_i_6/Cout (CarryGen_Block_26)     0.00       0.60 f
+  CarryGen_Array_1/block_i_7/Cin (CarryGen_Block_25)      0.00       0.60 f
+  CarryGen_Array_1/block_i_7/U2/ZN (AOI21_X1)             0.05       0.65 r
+  CarryGen_Array_1/block_i_7/U1/ZN (INV_X1)               0.03       0.68 f
+  CarryGen_Array_1/block_i_7/Cout (CarryGen_Block_25)     0.00       0.68 f
+  CarryGen_Array_1/block_i_8/Cin (CarryGen_Block_24)      0.00       0.68 f
+  CarryGen_Array_1/block_i_8/U2/ZN (AOI21_X1)             0.05       0.72 r
+  CarryGen_Array_1/block_i_8/U1/ZN (INV_X1)               0.03       0.75 f
+  CarryGen_Array_1/block_i_8/Cout (CarryGen_Block_24)     0.00       0.75 f
+  CarryGen_Array_1/block_i_9/Cin (CarryGen_Block_23)      0.00       0.75 f
+  CarryGen_Array_1/block_i_9/U2/ZN (AOI21_X1)             0.05       0.80 r
+  CarryGen_Array_1/block_i_9/U1/ZN (INV_X1)               0.03       0.83 f
+  CarryGen_Array_1/block_i_9/Cout (CarryGen_Block_23)     0.00       0.83 f
+  CarryGen_Array_1/block_i_10/Cin (CarryGen_Block_22)     0.00       0.83 f
+  CarryGen_Array_1/block_i_10/U2/ZN (AOI21_X1)            0.05       0.87 r
+  CarryGen_Array_1/block_i_10/U1/ZN (INV_X1)              0.03       0.90 f
+  CarryGen_Array_1/block_i_10/Cout (CarryGen_Block_22)
+                                                          0.00       0.90 f
+  CarryGen_Array_1/block_i_11/Cin (CarryGen_Block_21)     0.00       0.90 f
+  CarryGen_Array_1/block_i_11/U2/ZN (AOI21_X1)            0.05       0.95 r
+  CarryGen_Array_1/block_i_11/U1/ZN (INV_X1)              0.03       0.98 f
+  CarryGen_Array_1/block_i_11/Cout (CarryGen_Block_21)
+                                                          0.00       0.98 f
+  CarryGen_Array_1/block_i_12/Cin (CarryGen_Block_20)     0.00       0.98 f
+  CarryGen_Array_1/block_i_12/U2/ZN (AOI21_X1)            0.05       1.02 r
+  CarryGen_Array_1/block_i_12/U1/ZN (INV_X1)              0.03       1.05 f
+  CarryGen_Array_1/block_i_12/Cout (CarryGen_Block_20)
+                                                          0.00       1.05 f
+  CarryGen_Array_1/block_i_13/Cin (CarryGen_Block_19)     0.00       1.05 f
+  CarryGen_Array_1/block_i_13/U2/ZN (AOI21_X1)            0.05       1.10 r
+  CarryGen_Array_1/block_i_13/U1/ZN (INV_X1)              0.03       1.13 f
+  CarryGen_Array_1/block_i_13/Cout (CarryGen_Block_19)
+                                                          0.00       1.13 f
+  CarryGen_Array_1/block_i_14/Cin (CarryGen_Block_18)     0.00       1.13 f
+  CarryGen_Array_1/block_i_14/U2/ZN (AOI21_X1)            0.05       1.17 r
+  CarryGen_Array_1/block_i_14/U1/ZN (INV_X1)              0.03       1.20 f
+  CarryGen_Array_1/block_i_14/Cout (CarryGen_Block_18)
+                                                          0.00       1.20 f
+  CarryGen_Array_1/block_i_15/Cin (CarryGen_Block_17)     0.00       1.20 f
+  CarryGen_Array_1/block_i_15/U2/ZN (AOI21_X1)            0.05       1.25 r
+  CarryGen_Array_1/block_i_15/U1/ZN (INV_X1)              0.03       1.28 f
+  CarryGen_Array_1/block_i_15/Cout (CarryGen_Block_17)
+                                                          0.00       1.28 f
+  CarryGen_Array_1/block_i_16/Cin (CarryGen_Block_16)     0.00       1.28 f
+  CarryGen_Array_1/block_i_16/U2/ZN (AOI21_X1)            0.05       1.32 r
+  CarryGen_Array_1/block_i_16/U1/ZN (INV_X1)              0.03       1.35 f
+  CarryGen_Array_1/block_i_16/Cout (CarryGen_Block_16)
+                                                          0.00       1.35 f
+  CarryGen_Array_1/block_i_17/Cin (CarryGen_Block_15)     0.00       1.35 f
+  CarryGen_Array_1/block_i_17/U2/ZN (AOI21_X1)            0.05       1.40 r
+  CarryGen_Array_1/block_i_17/U1/ZN (INV_X1)              0.03       1.43 f
+  CarryGen_Array_1/block_i_17/Cout (CarryGen_Block_15)
+                                                          0.00       1.43 f
+  CarryGen_Array_1/block_i_18/Cin (CarryGen_Block_14)     0.00       1.43 f
+  CarryGen_Array_1/block_i_18/U2/ZN (AOI21_X1)            0.05       1.48 r
+  CarryGen_Array_1/block_i_18/U1/ZN (INV_X1)              0.03       1.50 f
+  CarryGen_Array_1/block_i_18/Cout (CarryGen_Block_14)
+                                                          0.00       1.50 f
+  CarryGen_Array_1/block_i_19/Cin (CarryGen_Block_13)     0.00       1.50 f
+  CarryGen_Array_1/block_i_19/U2/ZN (AOI21_X1)            0.05       1.55 r
+  CarryGen_Array_1/block_i_19/U1/ZN (INV_X1)              0.03       1.58 f
+  CarryGen_Array_1/block_i_19/Cout (CarryGen_Block_13)
+                                                          0.00       1.58 f
+  CarryGen_Array_1/block_i_20/Cin (CarryGen_Block_12)     0.00       1.58 f
+  CarryGen_Array_1/block_i_20/U2/ZN (AOI21_X1)            0.05       1.63 r
+  CarryGen_Array_1/block_i_20/U1/ZN (INV_X1)              0.03       1.65 f
+  CarryGen_Array_1/block_i_20/Cout (CarryGen_Block_12)
+                                                          0.00       1.65 f
+  CarryGen_Array_1/block_i_21/Cin (CarryGen_Block_11)     0.00       1.65 f
+  CarryGen_Array_1/block_i_21/U2/ZN (AOI21_X1)            0.05       1.70 r
+  CarryGen_Array_1/block_i_21/U1/ZN (INV_X1)              0.03       1.73 f
+  CarryGen_Array_1/block_i_21/Cout (CarryGen_Block_11)
+                                                          0.00       1.73 f
+  CarryGen_Array_1/block_i_22/Cin (CarryGen_Block_10)     0.00       1.73 f
+  CarryGen_Array_1/block_i_22/U2/ZN (AOI21_X1)            0.05       1.78 r
+  CarryGen_Array_1/block_i_22/U1/ZN (INV_X1)              0.03       1.81 f
+  CarryGen_Array_1/block_i_22/Cout (CarryGen_Block_10)
+                                                          0.00       1.81 f
+  CarryGen_Array_1/block_i_23/Cin (CarryGen_Block_9)      0.00       1.81 f
+  CarryGen_Array_1/block_i_23/U2/ZN (AOI21_X1)            0.05       1.85 r
+  CarryGen_Array_1/block_i_23/U1/ZN (INV_X1)              0.03       1.88 f
+  CarryGen_Array_1/block_i_23/Cout (CarryGen_Block_9)     0.00       1.88 f
+  CarryGen_Array_1/block_i_24/Cin (CarryGen_Block_8)      0.00       1.88 f
+  CarryGen_Array_1/block_i_24/U2/ZN (AOI21_X1)            0.05       1.93 r
+  CarryGen_Array_1/block_i_24/U1/ZN (INV_X1)              0.03       1.96 f
+  CarryGen_Array_1/block_i_24/Cout (CarryGen_Block_8)     0.00       1.96 f
+  CarryGen_Array_1/block_i_25/Cin (CarryGen_Block_7)      0.00       1.96 f
+  CarryGen_Array_1/block_i_25/U2/ZN (AOI21_X1)            0.05       2.00 r
+  CarryGen_Array_1/block_i_25/U1/ZN (INV_X1)              0.03       2.03 f
+  CarryGen_Array_1/block_i_25/Cout (CarryGen_Block_7)     0.00       2.03 f
+  CarryGen_Array_1/block_i_26/Cin (CarryGen_Block_6)      0.00       2.03 f
+  CarryGen_Array_1/block_i_26/U2/ZN (AOI21_X1)            0.05       2.08 r
+  CarryGen_Array_1/block_i_26/U1/ZN (INV_X1)              0.03       2.11 f
+  CarryGen_Array_1/block_i_26/Cout (CarryGen_Block_6)     0.00       2.11 f
+  CarryGen_Array_1/block_i_27/Cin (CarryGen_Block_5)      0.00       2.11 f
+  CarryGen_Array_1/block_i_27/U2/ZN (AOI21_X1)            0.05       2.15 r
+  CarryGen_Array_1/block_i_27/U1/ZN (INV_X1)              0.03       2.18 f
+  CarryGen_Array_1/block_i_27/Cout (CarryGen_Block_5)     0.00       2.18 f
+  CarryGen_Array_1/block_i_28/Cin (CarryGen_Block_4)      0.00       2.18 f
+  CarryGen_Array_1/block_i_28/U2/ZN (AOI21_X1)            0.05       2.23 r
+  CarryGen_Array_1/block_i_28/U1/ZN (INV_X1)              0.03       2.26 f
+  CarryGen_Array_1/block_i_28/Cout (CarryGen_Block_4)     0.00       2.26 f
+  CarryGen_Array_1/block_i_29/Cin (CarryGen_Block_3)      0.00       2.26 f
+  CarryGen_Array_1/block_i_29/U2/ZN (AOI21_X1)            0.05       2.30 r
+  CarryGen_Array_1/block_i_29/U1/ZN (INV_X1)              0.03       2.33 f
+  CarryGen_Array_1/block_i_29/Cout (CarryGen_Block_3)     0.00       2.33 f
+  CarryGen_Array_1/block_i_30/Cin (CarryGen_Block_2)      0.00       2.33 f
+  CarryGen_Array_1/block_i_30/U2/ZN (AOI21_X1)            0.05       2.38 r
+  CarryGen_Array_1/block_i_30/U1/ZN (INV_X1)              0.03       2.41 f
+  CarryGen_Array_1/block_i_30/Cout (CarryGen_Block_2)     0.00       2.41 f
+  CarryGen_Array_1/Cout[31] (CarryGen_Array_N32)          0.00       2.41 f
+  SumLogic_1/Cin[31] (SumLogic_N32)                       0.00       2.41 f
+  SumLogic_1/U8/Z (XOR2_X1)                               0.07       2.48 f
+  SumLogic_1/sum[31] (SumLogic_N32)                       0.00       2.48 f
+  sum[31] (out)                                           0.00       2.48 f
+  data arrival time                                                  2.48
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+1
